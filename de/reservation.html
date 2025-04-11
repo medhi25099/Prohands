@@ -1071,6 +1071,12 @@
         let total = 0;
         let totalTime = 0;
 
+        function timeConverter(time) {
+            const hours = Math.floor(time / 60);
+            const minutes = time % 60;
+            return `${hours}h${String(minutes).padStart(2, "0")}m`;
+        }
+
         function updateTotal() {
             total = 0;
             totalTime = 0;
@@ -1102,9 +1108,8 @@
             });
 
             totalPriceDisplay.innerText = `CHF ${total.toFixed(2)}`;
-            totalTimeDisplay.innerText = `${totalTime} min`;
+            totalTimeDisplay.innerText = timeConverter(totalTime);
         }
-
         // Mise à jour du total à chaque interaction
         document.addEventListener('change', updateTotal);
         document.addEventListener('click', updateTotal);
