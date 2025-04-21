@@ -46,9 +46,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-
 <body class="bg-white font-[poppins]">
-
     <header>
         <nav class="flex flex-wrap items-center justify-between gap-4 px-6 py-6 max-w-7xl mx-auto">
             <!-- Logo -->
@@ -85,21 +83,21 @@
                             <a href="../en/service.html"
                                 class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
                                 <img src="../img/flags/en.svg" class="w-5 h-5 mr-2" />
-                                <span class="hidden md:inline">English</span>
+                                <span class="md:inline">English</span>
                             </a>
                         </li>
                         <li>
                             <a href="../de/service.html"
                                 class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
                                 <img src="../img/flags/de.svg" class="w-5 h-5 mr-2" />
-                                <span class="hidden md:inline">Deutsch</span>
+                                <span class="md:inline">Deutsch</span>
                             </a>
                         </li>
                         <li>
-							<a href="..//"
+							<a href="../service.html"
 								class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
 								<img src="../img/flags/ch.svg" class="w-5 h-5 mr-2 " />
-								<span class="hidden md:inline">French</span>
+								<span class="md:inline">French</span>
 							</a>
 						</li>
                     </ul>
@@ -131,13 +129,10 @@
             <a href="./service.html" class="block hover:text-black">I nostri servizi</a>
         </div>
     </header>
-
-
     <!--Logo avec texte-->
     <div class="flex justify-center py-8">
         <img src="../img/logo_white.webp" alt="Logo Prohands" class="">
     </div>
-
     <!--overlay tire -->
     <section class="relative w-full bg-cover bg-center py-10"
         style="background-image: url('../img/BG-Sub-Hero-1-scaled.jpg');">
@@ -146,7 +141,6 @@
             <h1 class="text-3xl md:text-6xl font-bold tracking-wide" data-aos="slide-down">I nostri servizi</h1>
         </div>
     </section>
-
     <!-- Contenu sous overlay -->
     <section class="w-full max-w-5xl mx-auto px-6 py-12 space-y-12 overflow-hidden" data-aos="slide-left">
         <!-- Section Bloc -->
@@ -219,8 +213,6 @@
             </a>
         </div>
     </section>
-
-
     <!--image-->
     <section class="w-full max-w-7xl mx-auto px-4 py-12 ">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 overflow-hidden">
@@ -240,7 +232,6 @@
             data-aos="slide-left">
         </div>
     </section>
-
     <!-- ===== FOOTER FULL WIDTH AT BOTTOM ===== -->
     <footer class="w-full text-black text-sm bg-[#bcbcbc] bg-no-repeat bg-top bg-cover bg-[url('.../img/footer.png')]">
         <div class="relative z-10 py-14 bg-[#bcbcbc]/80 ">
@@ -298,15 +289,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000
-        });
-    </script>
-
-
-
-    <!--navbar-->
-    <script>
+        /*  Navbar Area */
         const langButton = document.getElementById('langButton');
         const langMenu = document.getElementById('langMenu');
         const menuToggle = document.getElementById('menu-toggle');
@@ -331,18 +314,10 @@
             }
         });
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuToggle.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        
+        /* Animation */
+        AOS.init({ duration: 1000 });
     </script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000
-        });
-    </script>
-
 </body>
-
 </html>
