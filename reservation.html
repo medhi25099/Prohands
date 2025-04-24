@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,13 +102,15 @@
                 </div>
 
                 <!-- Réserver -->
-                <a href="./reservation.html" class="bg-[#5F524F] text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-[#4d4542] transition">Réserver</a>
+                <a href="./reservation.html"
+                    class="bg-[#5F524F] text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-[#4d4542] transition">Réserver</a>
 
                 <!-- Burger -->
                 <div class="md:hidden">
                     <button id="menu-toggle" class="bg-[#5F524F] p-2 rounded hover:bg-[#4d4542]">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
@@ -115,7 +118,8 @@
         </nav>
 
         <!-- Menu mobile -->
-        <div id="mobile-menu" class="md:hidden hidden px-6 pt-4 pb-4 space-y-2 place-items-center text-base font-medium text-gray-700">
+        <div id="mobile-menu"
+            class="md:hidden hidden px-6 pt-4 pb-4 space-y-2 place-items-center text-base font-medium text-gray-700">
             <a href="./index.html" class="block hover:text-black">Accueil</a>
             <a href="./A propos.html" class="block hover:text-black">A propos</a>
             <a href="./service.html" class="block hover:text-black">Nos Services</a>
@@ -125,10 +129,26 @@
     <div class="h-6"></div>
 
     <div class="max-w-6xl mx-auto bg-white p-6 rounded shadow">
+        <!-- Étape 1 : Type de client -->
+        <div id="step-1" class="mb-8">
+            <div class="flex items-center flex-wrap gap-6">
+                <h2 class="text-xl font-bold mb-0">1. Êtes-vous :</h2>
 
-        <!-- Étape 1 : Choix du véhicule -->
-        <h2 class="text-xl font-bold mb-4">1. Choisissez le type de véhicule</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4" id="car-type-selection">
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" name="client-type" value="particulier" class="form-radio text-blue-600">
+                    <span class="text-gray-800">Particulier</span>
+                </label>
+
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" name="client-type" value="professionnel" class="form-radio text-blue-600">
+                    <span class="text-gray-800">Professionnel</span>
+                </label>
+            </div>
+        </div>
+        <!-- Étape 2 : Choix du véhicule -->
+
+        <h2 class="text-xl font-bold mb-4 hidden" id="car-selection-title">2. Choisissez le type de véhicule</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 hidden" id="car-type-selection">
             <div class="category border p-4 text-center rounded cursor-pointer transition hover:shadow-lg flex flex-col"
                 data-type="citadine">
                 <!-- Partie image (75%) -->
@@ -183,12 +203,22 @@
                     <p class="text-sm text-gray-700">SUV / Monospace</p>
                     <p class="text-sm font-semibold text-gray-900">Skoda Enyaq, Tesla Y, ...</p>
                 </div>
+
             </div>
+                <!-- Options additionnelles -->
+                <div id="options-voiture" class="mt-6 ">
+                    <h3 class="font-semibold mb-2">Options additionnelles (voiture)</h3>
+                    <div id="voiture-options-container" class="space-y-2 text-sm">
+                        <!-- Options dynamiques ici -->
+                    </div>
+                </div>
         </div>
 
-        <!-- Étape 2 : Lavage intérieur -->
+
+
+        <!-- Étape 3 : Lavage intérieur -->
         <div id="lavage-interieur" class="mt-8 hidden">
-            <h2 class="text-xl font-bold mb-4">2. Lavage intérieur</h2>
+            <h2 class="text-xl font-bold mb-4">3. Lavage intérieur</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <!-- Aucun -->
                 <div class="lavage-int-option border p-4 rounded cursor-pointer hover:shadow" data-type="aucun">
@@ -229,9 +259,9 @@
             </div>
         </div>
 
-        <!-- Étape 3 : Lavage extérieur -->
+        <!-- Étape 4 : Lavage extérieur -->
         <div id="lavage-exterieur" class="mt-12 hidden">
-            <h2 class="text-xl font-bold mb-4">3. Lavage extérieur</h2>
+            <h2 class="text-xl font-bold mb-4">4. Lavage extérieur</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <!-- Aucun -->
                 <div class="lavage-ext-option border p-4 rounded cursor-pointer hover:shadow" data-type="aucun">
@@ -269,11 +299,20 @@
             </div>
         </div>
 
-        <!-- Étape 4 : Formulaire moderne -->
+        <!-- Étape 5 : Formulaire moderne -->
         <div id="formulaire-contact" class="mt-12 hidden">
-            <h2 class="text-xl font-bold mb-6">4. Finalisez votre réservation</h2>
+            <h2 class="text-xl font-bold mb-6">5. Finalisez votre réservation</h2>
 
             <form class="space-y-6">
+                <!-- Date et heure de réservation -->
+                <div class="relative">
+                    <input type="text" id="date-heure" name="date-heure" required
+                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" " />
+                    <label for="date-heure"
+                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                        Date et heure de réservation</label>
+                </div>
                 <!-- Nom complet et Email -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="relative">
@@ -347,16 +386,6 @@
                             Ville</label>
                     </div>
                 </div>
-                <!-- Date et heure de réservation -->
-                <div class="relative">
-                    <input type="text" id="date-heure" name="date-heure" required
-                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder=" " />
-                    <label for="date-heure"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                        Date et heure de réservation</label>
-                </div>
-
 
                 <!-- Remarques -->
                 <div class="relative">
@@ -368,8 +397,9 @@
                         Remarques (facultatif)</label>
                 </div>
                 <!-- Moyen de paiement -->
-                <div class="relative"> 
-                    <label for="payment-method"  class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500 mb-2">
+                <div class="relative">
+                    <label for="payment-method"
+                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500 mb-2">
                         Moyen de paiement
                     </label>
                     <select id="payment-method" name="payment-method" required
@@ -413,10 +443,13 @@
                         <img src="./img/cropped-car-1-white.webp" alt="Voiture" class="mx-auto w-[120px]">
                     </div>
                     <div class="flex justify-center space-x-4">
-						<a href="https://www.facebook.com/people/Pro-Hands-CarWash/61554807187710/" target="_blank"><i class="fa-brands fa-facebook text-2xl"></i></a>
-						<a href="https://www.instagram.com/pro_hands_carwash" target="_blank"><i class="fa-brands fa-instagram text-2xl"></i></a>
-						<a href="https://www.tiktok.com/@prohands_carwash" target="_blank"><i class="fa-brands fa-tiktok text-2xl"></i></a>
-					</div>
+                        <a href="https://www.facebook.com/people/Pro-Hands-CarWash/61554807187710/" target="_blank"><i
+                                class="fa-brands fa-facebook text-2xl"></i></a>
+                        <a href="https://www.instagram.com/pro_hands_carwash" target="_blank"><i
+                                class="fa-brands fa-instagram text-2xl"></i></a>
+                        <a href="https://www.tiktok.com/@prohands_carwash" target="_blank"><i
+                                class="fa-brands fa-tiktok text-2xl"></i></a>
+                    </div>
                 </div>
 
                 <!-- Bloc 2 - Informations -->
@@ -457,7 +490,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
         /* Navbar area */
         const langButton = document.getElementById('langButton');
@@ -655,6 +688,11 @@
                         estimatedTime: 0,
                         additionnalOps: {}
                     }
+                },
+                'additionnalOps' :{
+                    question: 'Avez vous un véhicule 7 places ?',
+                    reponse1: 'Oui',
+                    reponse2: 'Non'
                 }
             },
             'routiere': {
@@ -1085,8 +1123,8 @@
 
         function resetAllElement() {
             [lavageInterieur, optionsIntDiv, lavageExtSection, optionsExtDiv, formulaireContact].forEach(hideElement);
-            [lavageIntOptions,lavageExtOptions].forEach(elements => { elements.forEach(removeActiveElement) });
-            [intOptionsContainer,extOptionsContainer].forEach(eraseInnerHtmlElement)
+            [lavageIntOptions, lavageExtOptions].forEach(elements => { elements.forEach(removeActiveElement) });
+            [intOptionsContainer, extOptionsContainer].forEach(eraseInnerHtmlElement)
         }
 
         function updateNextPrestationOptions(element, vehiculeType, optsType) {
@@ -1116,31 +1154,31 @@
 
                 //let innerHtmlOptions = '';
                 subOptsContainer.innerHTML = '';
-                
+
                 let availablesOptions = vehiculeTypePrice[vehiculeType][optsType][prestationType].additionnalOps;
-                
+
                 for (let option of Object.values(availablesOptions)) {
                     let container = document.createElement('label');
                     container.className = `flex items-center`;
-                    if(option.type === "checkbox"){
+                    if (option.type === "checkbox") {
                         let inputEl = document.createElement('input');
-                        inputEl.setAttribute('type','checkbox');
+                        inputEl.setAttribute('type', 'checkbox');
                         inputEl.className = "mr-2";
                         setPriceElement(inputEl, option.price);
                         setTimeElement(inputEl, option.estimatedTime);
                         //innerHtmlOptions += `<label class="block"><input type="checkbox" class="mr-2" data-price="${option.price}" data-time="${option.estimatedTime}"> ${option.name} (CHF ${option.price})</label>`
                         container.appendChild(inputEl);
-                    } 
-                    else if(option.type === "input"){
+                    }
+                    else if (option.type === "input") {
                         let inputEl = document.createElement('input');
-                        inputEl.setAttribute('type','text');
+                        inputEl.setAttribute('type', 'text');
                         inputEl.className = "shrink-0 text-gray-900 border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[1.5rem] text-center";
-                        inputEl.setAttribute('value','0');
+                        inputEl.setAttribute('value', '0');
                         setPriceElement(inputEl, 0);
                         setTimeElement(inputEl, 0);
-                        
+
                         let btnDown = document.createElement('button');
-                        btnDown.setAttribute('type','button');
+                        btnDown.setAttribute('type', 'button');
                         btnDown.className = "shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
                         btnDown.innerHTML = `
                             <svg class="w-2.5 h-2.5 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
@@ -1149,16 +1187,16 @@
                         `;
                         btnDown.addEventListener('click', () => {
                             let actualValue = parseInt(inputEl.value);
-                            if(actualValue > option.minValue){
+                            if (actualValue > option.minValue) {
                                 let newValue = actualValue - 1;
                                 inputEl.setAttribute('value', newValue);
                                 setPriceElement(inputEl, `${option.price * newValue}`);
                                 setTimeElement(inputEl, `${option.estimatedTime * newValue}`);
                             }
                         });
-                        
+
                         let btnUp = document.createElement('button');
-                        btnUp.setAttribute('type','button');
+                        btnUp.setAttribute('type', 'button');
                         btnUp.className = "mr-2 shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none";
                         btnUp.innerHTML = `
                             <svg class="w-2.5 h-2.5 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
@@ -1167,14 +1205,14 @@
                         `;
                         btnUp.addEventListener('click', () => {
                             let actualValue = parseInt(inputEl.value);
-                            if(actualValue < option.maxValue){
+                            if (actualValue < option.maxValue) {
                                 let newValue = actualValue + 1;
                                 inputEl.setAttribute('value', newValue);
                                 setPriceElement(inputEl, `${option.price * newValue}`);
                                 setTimeElement(inputEl, `${option.estimatedTime * newValue}`);
                             }
                         });
-                        [btnDown,inputEl,btnUp].forEach(e => container.appendChild(e));
+                        [btnDown, inputEl, btnUp].forEach(e => container.appendChild(e));
                     }
                     container.insertAdjacentText("beforeend", `${option.name} (CHF ${option.price})`);
                     subOptsContainer.appendChild(container);
@@ -1184,6 +1222,13 @@
                 hideElement(actualPrestationOptsElem);
             }
         }
+
+        document.querySelectorAll('input[name="client-type"]').forEach((radio) => {
+            radio.addEventListener('change', () => {
+                document.getElementById('car-type-selection').classList.remove('hidden');
+                document.getElementById('car-selection-title').classList.remove('hidden');
+            });
+        });
 
         // Clic sur type de véhicule
         function hookVehiculeTypes(vehicle) {
@@ -1245,7 +1290,7 @@
             ]
             selectorClassnameArray.forEach(className => {
                 let element = document.querySelector(className);
-                if(element) updateElementInfos(element);
+                if (element) updateElementInfos(element);
             });
 
             let selectorAllClassnameArray = [
@@ -1255,8 +1300,10 @@
                 // Options extérieures
                 '#exterieur-options-container input[type="text"]',
                 '#exterieur-options-container input[type="checkbox"]:checked'
-            ] 
-            selectorAllClassnameArray.forEach(className => { document.querySelectorAll(className).forEach(updateElementInfos); });
+            ]
+            selectorAllClassnameArray.forEach(className => {
+                document.querySelectorAll(className).forEach(updateElementInfos);
+            });
             totalPriceDisplay.innerText = `CHF ${total.toFixed(2)}`;
             totalTimeDisplay.innerText = timeConverter(totalTime);
         }
@@ -1266,4 +1313,5 @@
         document.addEventListener('click', updateTotal);
     </script>
 </body>
+
 </html>

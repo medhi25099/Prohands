@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Prohands-Carwash propose à ses partenaires des solutions innovantes qui revalorisent le service offert aux clients finaux. Nous proposons aux professionnels et aux particuliers un service de nettoyage et de préparation automobile. Nous nous déplaçons à l’endroit de votre choix, comme à votre domicile, à votre lieu de travail ou encore à votre garage. Notre agréable équipe est composée de professionnels qui s’assureront de vous fournir un nettoyage de qualité. La satisfaction et la confiance de nos clients sont au cœur de nos priorités. Nous travaillons également en partenariat avec des garages existants afin de leur fournir un service de nettoyage après réparation.">
+    <meta property="og:title"
+        content="Proĥands-Carwash - Préparation et Nettoyage Automobile Écologique, à Domicile ou à l&#039;Emplacement de votre Garage, pour Particuliers et Professionnels">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/wp-content/uploads/2024/07/logo_white.webp">
+    <meta property="og:image:width" content="534">
+    <meta property="og:image:height" content="320">
+    <meta property="og:image:alt" content="logo_white">
+    <meta property="og:description"
+        content="Prohands-Carwash propose à ses partenaires des solutions innovantes qui revalorisent le service offert aux clients finaux. Nous proposons aux professionnels et aux particuliers un service de nettoyage et de préparation automobile. Nous nous déplaçons à l’endroit de votre choix, comme à votre domicile, à votre lieu de travail ou encore à votre garage. Notre agréable équipe est composée de professionnels qui s’assureront de vous fournir un nettoyage de qualité. La satisfaction et la confiance de nos clients sont au cœur de nos priorités. Nous travaillons également en partenariat avec des garages existants afin de leur fournir un service de nettoyage après réparation.">
+    <meta property="og:url" content="/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Pro Hands Carwash">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./img/2024/07/logo_white.webp">
+    <meta name="author" content="visionnaire-agency">
+    <meta name="date" content="2025-04-08">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Proĥands-Carwash - Préparation et Nettoyage Automobile Écologique, à Domicile ou à l'Emplacement de votre
+        Garage, pour Particuliers et Professionnels</title>
+    <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="alternate" href="/" hreflang="fr">
+    <link rel="alternate" href="/en/home-english/" hreflang="en">
+    <link rel="alternate" href="/de/home-deutsch/" hreflang="de">
+    <link href="./output.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-white font-[poppins]">
+    <header id="header"></header>
+    <div id="steps-container"></div>
+    <footer id="footer"></footer>
+    <script src="./assets/js/prohands.js"></script>
+    <script>
+        const CITADINE_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 119,
+                    estimatedTime: 60,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 30,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 30,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 30,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'premium': {
+                    price: 189,
+                    estimatedTime: 120,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 59,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 59,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 59,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 49,
+                    estimatedTime: 40,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 179,
+                            estimatedTime: 90,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 79,
+                    estimatedTime: 75,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 39,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 179,
+                            estimatedTime: 90,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const LIMOUSINE_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 129,
+                    estimatedTime: 70,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 209,
+                    estimatedTime: 125,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 69,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 69,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 69,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 59,
+                    estimatedTime: 50,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 209,
+                            estimatedTime: 110,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 99,
+                    estimatedTime: 85,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 39,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 209,
+                            estimatedTime: 110,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const ROUTIERE_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 149,
+                    estimatedTime: 85,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 40,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 40,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 40,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 249,
+                    estimatedTime: 160,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 79,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 79,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 79,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 69,
+                    estimatedTime: 60,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 249,
+                            estimatedTime: 120,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 119,
+                    estimatedTime: 90,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 39,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 249,
+                            estimatedTime: 120,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const SUV_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 169,
+                    estimatedTime: 100,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 45,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 45,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 45,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 289,
+                    estimatedTime: 180,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 89,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 89,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 89,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 79,
+                    estimatedTime: 70,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 289,
+                            estimatedTime: 140,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 149,
+                    estimatedTime: 90,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 39,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 289,
+                            estimatedTime: 140,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const SUV_SERVICES_7_PLACES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 189,
+                    estimatedTime: 120,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 45,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 45,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 45,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 359,
+                    estimatedTime: 240,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 89,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des sièges tachés',
+                            price: 89,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 89,
+                            estimatedTime: 40,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 29,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 79,
+                    estimatedTime: 70,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 289,
+                            estimatedTime: 140,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 149,
+                    estimatedTime: 90,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 39,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 39,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Polish (Carrosserie)',
+                            price: 289,
+                            estimatedTime: 140,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            price: 199,
+                            estimatedTime: 45,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+
+        const totalContainerInfos = {
+            messageTime: 'Temps estimée : ',
+            messagePrice: 'Total à payer : '
+        }
+
+        const stepSelectUserType = {
+            title: '1. Êtes-vous :',
+            choices: ["Particulier", "Professionnel"]
+        }
+
+        const stepSelectVehiculeType = {
+            title: "2. Choisissez le type de véhicule",
+            additionnalOptsTitle: "Options additionnelles (voiture)",
+            choices: [
+                {
+                    name: "Citadine",
+                    description: "Fiat 500, Mini GP, ...",
+                    imgPath: "./img/citadine.png",
+                    imgScale: "75",
+                    'data-type': "citadine",
+                    services: CITADINE_SERVICES,
+                    additionnalInfo: false
+                },
+                {
+                    name: "Limousine",
+                    description: "VW Golf, Mercedes A250, ...",
+                    imgPath: "./img/limousine.png",
+                    imgScale: "90",
+                    'data-type': "limousine",
+                    services: LIMOUSINE_SERVICES,
+                    additionnalInfo: false
+                },
+                {
+                    name: "Routière",
+                    description: "Mercedes C250, Skoda Octavia, ...",
+                    imgPath: "./img/routiere.png",
+                    imgScale: "100",
+                    'data-type': "routiere",
+                    services: ROUTIERE_SERVICES,
+                    additionnalInfo: false
+                },
+                {
+                    name: "SUV / Monospace",
+                    description: "Skoda Enyaq, Tesla Y, ...",
+                    imgPath: "./img/SUV_monospace.png",
+                    imgScale: "110",
+                    'data-type': "suv",
+                    services: SUV_SERVICES,
+                    additionnalOpts: {
+                        question: 'Avez vous un véhicule 7 places ?',
+                        choices: [
+                            { text: 'Oui', services: SUV_SERVICES_7_PLACES },
+                            { text: 'Non', services: SUV_SERVICES }
+                        ]
+                    }
+                }
+            ]
+        }
+
+        const stepSelectLavageInterieurType = {
+            title: "3. Lavage intérieur",
+            additionnalOptsTitle: "Options additionnelles (intérieur)",
+            choices:[{ 
+                name: "Aucun", 
+                description: "Pas de nettoyage intérieur prévu.",
+                "data-type": "aucun"
+            },{ 
+                name: "Standard", 
+                description: "Dépoussiérage de l'habitacle Aspiration des sièges, sols et du coffre Nettoyage des vitres, tableau de bord et passages du portes Nettoyage plastique",
+                "data-type": "standard"
+            },{
+                name: "Premium",
+                description: "Dépoussiérage de l'habitacle Triple aspiration des sièges, sols et du coffre Nettoyage des sièges et tapis Nettoyage des vitres, tableau de bord et double nettoyage des contours du portes nettoyage plastiques + traitement plastique",
+                "data-type": "premium"
+            }]
+        }
+
+        const stepSelectLavageExterieurType = {
+            title: "4. Lavage extérieur",
+            additionnalOptsTitle: "Options additionnelles (intérieur)",
+            choices:[{ 
+                name: "Aucun", 
+                description: "Pas de nettoyage extérieur prévu.",
+                "data-type": "aucun"
+            },{ 
+                name: "Standard", 
+                description: " Nettoyage de carrosserie, vitres, pare-brise, des phares simple",
+                "data-type": "standard"
+            },{
+                name: "Premium",
+                description: "double Nettoyage de carrosserie, démoustication, vitres, pare-brise, des phares, brillants pneus en profondeur ",
+                "data-type": "premium"
+            }]
+        }
+
+        const stepFormulaire = {
+            title: "5. Finalisez votre réservation",
+            professionnel: {},
+            particulier: {
+                datePicker: "Data et heure de réservation",
+                name: "Nom complet",
+                email: "Email",
+                phone: "Téléphone",
+                infos: "Marque et modéle du véhicule",
+                add: "Addresse",
+                nip: "Code postale",
+                city: "Ville",
+                comment: "Remarques (facultatif)",
+                payments:{
+                    label: "Moyen de paiement",
+                    labelAlt: 'Choisir un moyen de paiement',
+                    options:[
+                        { name: "Cash", imgPath: "" },
+                        { name: "Twint", imgPath: "" },
+                        { name: "Terminal", imgPath: "" }
+                    ] 
+                },
+                button: 'Réserver maintenant'
+            }
+        }
+    </script>
+    <script src="./assets/js/reservation.js"></script>
+</body>
+
+</html>
