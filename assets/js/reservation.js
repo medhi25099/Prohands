@@ -438,6 +438,69 @@ function getElementTotalPriceAndTime() {
     return totalContainer;
 }
 
+const validateField = (value, pattern, errorMessage) => {
+    if(!pattern.test(value)){
+        showToastMessage("failed", errorMessage);
+        return false;
+    }
+    return true;
+}
+
+const regexPatterns = {
+    nomPrenom: /^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+)*$/,
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    sujet: /^[A-Za-z0-9À-ÖØ-öø-ÿ.,!?()\- ]{3,}$/,
+    message: /^.{10,}$/,
+    phone: /^(\+|00)?\d{1,4}[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{2,4}[\s.-]?\d{2,4}[\s.-]?\d{2,4}$/,
+    date: /^(\d{4}[-/.](0[1-9]|1[0-2])[-/.](0[1-9]|[12][0-9]|3[01])|(?:0[1-9]|[12][0-9]|3[01])[-/.](?:0[1-9]|1[0-2])[-/.]\d{4}|(?:0[1-9]|1[0-2])[-/.](?:0[1-9]|[12][0-9]|3[01])[-/.]\d{4})\s(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/
+}
+
+async function sendEmail(formData) {
+    try {
+        //Mail for prohands
+        //await emailjs.send("service","template", formData);
+        
+        //Mail confirmation client
+        //await emailjs.send("service","template", { ...formData, to_email: formData.email });
+        showToastMessage("success", stepFormulaire.toastMsg.success);
+    } catch (e){
+        showToastMessage("failed", stepFormulaire.toastMsg.error + JSON.stringify(e));
+    }
+}
+
+
+async function checkFormulaire(){
+    try {
+        let date = document.getElementById('date-heure').value;
+        let name = document.getElementById('nom').value;
+        let email = document.getElementById('email').value;
+        let phone = document.getElementById('tel').value;
+        let plaque = document.getElementById('plaque').value;
+        let address = document.getElementById('adresse').value;
+        let zip = document.getElementById('zip').value;
+        let city = document.getElementById('ville').value;
+        let comments = document.getElementById('remarques').value;
+        let payment = document.getElementById('payment-method').value;
+
+        if(!validateField(date, regexPatterns.date, stepFormulaire.toastMsg.errors.date )) return false;
+        if(!validateField(name, regexPatterns.nomPrenom, stepFormulaire.toastMsg.errors.name)) return false;
+        if(!validateField(email, regexPatterns.email, stepFormulaire.toastMsg.errors.email)) return false;
+        if(!validateField(phone, regexPatterns.phone, stepFormulaire.toastMsg.errors.phone)) return false;
+        if(!validateField(plaque, regexPatterns.sujet, stepFormulaire.toastMsg.errors.plaque)) return false;
+        if(!validateField(address, regexPatterns.sujet, stepFormulaire.toastMsg.errors.address)) return false;
+        if(!validateField(zip, regexPatterns.sujet, stepFormulaire.toastMsg.errors.zip)) return false;
+        if(!validateField(city, regexPatterns.sujet, stepFormulaire.toastMsg.errors.city)) return false;
+        if(!validateField(comments, regexPatterns.message, stepFormulaire.toastMsg.errors.comments)) return false;
+        if(!validateField(payment, regexPatterns.sujet, stepFormulaire.toastMsg.errors.payment)) return false;
+
+        const formData = { date, name, email, phone, plaque, address, zip, city, comments, payment };
+        
+        return await sendEmail(formData);
+    } catch(error){
+        showToastMessage("failed", error.message);
+    }
+}
+
 function loadParticulierFormulaire(){
     const formulaireFormElement = document.getElementById('formulaire-contact-form');
     formulaireFormElement.innerHTML = `
@@ -520,7 +583,7 @@ function loadParticulierFormulaire(){
     </div>
     <!-- Bouton -->
     <div>
-        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all">
+        <button id="btn-send-formulaire" class="w-full disabled:bg-gray-500 bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all" disabled>
             ${stepFormulaire.particulier.button}
         </button>
     </div>`;
@@ -533,13 +596,16 @@ function loadParticulierFormulaire(){
         paymentContainer.appendChild(optionElement);
     }
 
+    let btnSendForm = document.getElementById('btn-send-formulaire');
+    btnSendForm.addEventListener('click', checkFormulaire);
+
     /* Datetime picker init */
     flatpickr("#date-heure", {
         enableTime: true,
         dateFormat: "d-m-Y H:i",
         time_24hr: true,
         minDate: "today",
-        locale: flatpickr.l10ns.fr,
+        locale: flatpickr.l10ns[stepFormulaire.language],
         disable: [
             function (date) {
                 return date.getDay() === 0;
@@ -561,7 +627,7 @@ function getFormulaireElement(){
     formulaireElement.className = "mt-8 hidden";
     formulaireElement.innerHTML = `
     <h2 class="text-xl font-bold mb-6">${stepFormulaire.title}</h2>
-    <form id="formulaire-contact-form" class="space-y-6"></form>`
+    <div id="formulaire-contact-form" class="space-y-6"></div>`
     return formulaireElement;
 }
 
@@ -627,6 +693,13 @@ function updateTotal() {
     selectorAllClassnameArray.forEach(className => {
         document.querySelectorAll(className).forEach(updateElementInfos);
     });
+
+    let btnSendFormulaire = document.getElementById('btn-send-formulaire');
+    if(btnSendFormulaire){
+        if( total === 0) btnSendFormulaire.setAttribute('disabled','');
+        else btnSendFormulaire.removeAttribute('disabled')
+    }
+
     document.getElementById('total-price').innerText = `CHF ${total.toFixed(2)}`;
     document.getElementById('total-time').innerText = timeConverter(totalTime);
 }

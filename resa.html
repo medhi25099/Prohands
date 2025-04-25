@@ -836,6 +836,7 @@
 
         const stepFormulaire = {
             title: "5. Finalisez votre réservation",
+            language: 'fr',//DatePicker language
             professionnel: {},
             particulier: {
                 datePicker: "Data et heure de réservation",
@@ -857,6 +858,22 @@
                     ] 
                 },
                 button: 'Réserver maintenant'
+            },
+            toastMsg:{
+                success: 'Votre réservation a été envoyé avec succès!',
+                error: "Une erreur est survenue. Veuillez réessayer plus tard.",
+                errors: {
+                    date: 'Veuillez selectionner une date dans le formulaire.',
+                    name: 'Veuillez entrer un nom dans le formulaire.',
+                    email: 'Veuillez entrer un email dans le formulaire.',
+                    phone: 'Veuillez entrer un tel dans le formulaire.',
+                    plaque: 'Veuillez entrer votre marque et model de véhicule dans le formulaire.',
+                    address: 'Veuillez entrer votre adresse dans le formulaire.',
+                    zip: 'Veuillez entrer votre nip dans le formulaire.',
+                    city: 'Veuillez entrer votre ville dans le formulaire.',
+                    comments: 'Veuillez entrer un message de 10 caractères ou plus dans le formulaire.',
+                    payment: 'Veuillez selectionner votre type de paiement dans le formulaire.' 
+                }
             }
         }
     </script>
