@@ -418,6 +418,124 @@
                 </div>
             </form>
         </div>
+        <div id="formulaire-contact" class="mt-12 hidden">
+            <h2 class="text-xl font-bold mb-6">5. Finalisez votre réservation</h2>
+
+            <form class="space-y-6">
+                <!-- Date et heure de réservation -->
+                <div class="relative">
+                    <input type="text" id="date-heure" name="date-heure" required
+                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" " />
+                    <label for="date-heure"
+                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                        Date et heure de réservation</label>
+                </div>
+                <!-- Nom complet et Email -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="relative">
+                        <input type="text" id="nom" required
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="nom"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Nom complet</label>
+                    </div>
+
+                    <div class="relative">
+                        <input type="email" id="email" required
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="email"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Email</label>
+                    </div>
+                </div>
+
+                <!-- Téléphone et Plaque -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="relative">
+                        <input type="tel" id="tel" required
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="tel"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Téléphone</label>
+                    </div>
+
+                    <div class="relative">
+                        <input type="text" id="plaque"
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="plaque"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Marque et modéle du véhicule</label>
+                    </div>
+                </div>
+
+                <!-- Adresse, Code postal et Ville -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative col-span-1 md:col-span-3">
+                        <input type="text" id="adresse" required
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="adresse"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Adresse</label>
+                    </div>
+                </div>
+                <!--Ville COde postale -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="relative">
+                        <input type="tel" id="zip" required
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="tel"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Code postale</label>
+                    </div>
+
+                    <div class="relative">
+                        <input type="text" id="ville" required
+                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=" " />
+                        <label for="plaque"
+                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                            Ville</label>
+                    </div>
+                </div>
+
+                <!-- Remarques -->
+                <div class="relative">
+                    <textarea id="remarques" rows="4"
+                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-transparent"
+                        placeholder=" "></textarea>
+                    <label for="remarques"
+                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                        Remarques (facultatif)</label>
+                </div>
+                <!-- Moyen de paiement -->
+                <div class="relative">
+                    <label for="payment-method"
+                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500 mb-2">
+                        Moyen de paiement
+                    </label>
+                    <select id="payment-method" name="payment-method" required
+                        class="peer w-full border border-gray-300 rounded px-4 pt-6 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="" disabled selected>Choisir un moyen de paiement</option>
+                        <option value="cash">Cash</option>
+                        <option value="twint">Twint</option>
+                        <option value="terminal">Terminal</option>
+                    </select>
+                </div>
+                <!-- Bouton -->
+                <div>
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all">Réserver
+                        maintenant</button>
+                </div>
+            </form>
+        </div>
 
         <div class="col-span-1 md:col-span-2 hidden">
             <div class="text-right font-bold text-lg mb-2">

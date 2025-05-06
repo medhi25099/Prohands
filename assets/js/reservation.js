@@ -7,6 +7,10 @@ function closeCollapse(elementID){
     stepContainer.querySelector('svg').classList.add('rotate-180');
 }
 
+scrollIntoSection = e => { 
+    setTimeout(()=> document.getElementById(e).scrollIntoView({ behavior:"smooth" }), 250);
+};
+
 function resetVehiculeType(){
     let stepSelectVehiculeType = document.getElementById('select-vehicule-type');
     if (stepSelectVehiculeType) {
@@ -55,13 +59,13 @@ function resetAllElements() {
     document.getElementById('formulaire-contact').classList.add('hidden');
 }
 
-function createBtnCollapse(title) {
+function createBtnCollapse(stepNumber, title) {
     let h2 = document.createElement('h2');
     h2.className = "flex justify-between items-center text-xl font-bold mb-4";
     h2.setAttribute('data-type', 'btn-collapse');
     h2.setAttribute('state','open');
     h2.innerHTML = `
-    <span>${title}</span>
+    <span>${stepNumber}. ${title}</span>
     <svg class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
     </svg>`;
@@ -160,6 +164,7 @@ function updateAndDisplayPrestationExterieur(prestationType){
         //Add click event
         element.addEventListener('click',(e) => {
             closeCollapse('select-lavage-interieur-global-container');
+            scrollIntoSection('select-lavage-exterieur-global-container');
             setPriceElement(element, price);
             setTimeElement(element, estimatedTime);
 
@@ -177,11 +182,30 @@ function updateAndDisplayPrestationExterieur(prestationType){
                 for (let option of Object.values(additionnalOpts)) {
                     let opt = createOptionnalOptions(option);
                     opt.insertAdjacentText("beforeend", `${option.name} (CHF ${option.price})`);
+                    if(option.hasOwnProperty('tootips')){
+                        let span = document.createElement('span');
+                        span.innerHTML = `
+                        <div class="relative group">
+                            <button class=" text-black rounded scale-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                </svg>
+                            </button>
+                            <div class="absolute w-80 bottom-full left-[-100%] md:left-[50%]  -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                                ${option.tootips}
+                            </div>
+                        </div>
+                        `
+                        opt.appendChild(span);
+                    }
+
                     optionsContainer.appendChild(opt);
                 }
                 document.getElementById('select-lavage-exterieur-additionnal-options-container').classList.remove('hidden');
             } else {
                 document.getElementById('select-lavage-exterieur-additionnal-options-container').classList.add('hidden');
+                closeCollapse('select-lavage-exterieur-global-container');
+                scrollIntoSection('formulaire-contact');
             }
             //Display formulaire
             document.getElementById('formulaire-contact').classList.remove('hidden')
@@ -195,6 +219,7 @@ function loadVehiculePrestation(prestationType) {
     resetLavageType('interieur');
     resetLavageType('exterieur');
     closeCollapse('select-vehicule-type');
+    scrollIntoSection('select-lavage-interieur-global-container');
     //Build lavage interieur and exterieur with data
     let lavageInterieurOptionElement = document.querySelectorAll('.lavage-interieur-option');
     lavageInterieurOptionElement.forEach(element => {
@@ -231,6 +256,8 @@ function loadVehiculePrestation(prestationType) {
                 document.getElementById('select-lavage-interieur-additionnal-options-container').classList.remove('hidden');
             } else {
                 document.getElementById('select-lavage-interieur-additionnal-options-container').classList.add('hidden');
+                closeCollapse('select-lavage-interieur-global-container');
+                scrollIntoSection('select-lavage-exterieur-global-container');
             }
             //Update and Display lavage exterieur
             updateAndDisplayPrestationExterieur(prestationType);
@@ -244,8 +271,9 @@ function getElementSelectUserType() {
     const selectUserTypeContainer = document.createElement('div');
     selectUserTypeContainer.id = "select-user-type";
     selectUserTypeContainer.innerHTML = `
-        <div class="flex items-center flex-wrap gap-6">
-            <h2 class="text-xl font-bold mb-0">${stepSelectUserType.title}</h2>
+    <div class="flex items-center flex-wrap gap-6">
+        <h2 class="text-xl font-bold mb-0">${stepSelectUserType.title}</h2>
+        <div class="inline-flex gap-6">
             <label class="flex items-center space-x-2 cursor-pointer">
                 <input type="checkbox" name="client-type" value="particulier" class="form-radio text-blue-600">
                 <span class="text-gray-800">${stepSelectUserType.choices[0]}</span>
@@ -254,7 +282,8 @@ function getElementSelectUserType() {
                 <input type="checkbox" name="client-type" value="professionnel" class="form-radio text-blue-600">
                 <span class="text-gray-800">${stepSelectUserType.choices[1]}</span>
             </label>
-        </div>`;
+        </div>
+    </div>`;
     const [checkboxParticulier, checkboxProfessionel] = selectUserTypeContainer.querySelectorAll('[type="checkbox"]');
     [checkboxParticulier, checkboxProfessionel].forEach(element => {
         element.addEventListener('change', (e) => {
@@ -359,7 +388,7 @@ function getElementSelectVehiculeType() {
     const selectVehiculeTypeContainer = document.createElement('div');
     selectVehiculeTypeContainer.id = "select-vehicule-type";
     selectVehiculeTypeContainer.className = "mt-8 hidden";
-    const h2SelectVehicule = createBtnCollapse(stepSelectVehiculeType.title);
+    const h2SelectVehicule = createBtnCollapse(stepSelectVehiculeType.stepNumber, stepSelectVehiculeType.title);
     selectVehiculeTypeContainer.appendChild(h2SelectVehicule);
 
     const colapseContainer = document.createElement('div');
@@ -399,7 +428,7 @@ function getElementSelectLavageType(prestation, stepName){
     const selectLavageTypeContainer = document.createElement('div');
     selectLavageTypeContainer.id = `select-lavage-${stepName}-global-container`;
     selectLavageTypeContainer.className = "mt-8 hidden";
-    const h2SelectLavage = createBtnCollapse(prestation.title);
+    const h2SelectLavage = createBtnCollapse(prestation.stepNumber, prestation.title);
     selectLavageTypeContainer.appendChild(h2SelectLavage);
 
     const colapseContainer = document.createElement('div');
@@ -446,6 +475,7 @@ const validateField = (value, pattern, errorMessage) => {
     return true;
 }
 
+emailjs.init("J6unhdg87ygbWvXDb");
 const regexPatterns = {
     nomPrenom: /^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+)*$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -458,16 +488,102 @@ const regexPatterns = {
 async function sendEmail(formData) {
     try {
         //Mail for prohands
-        //await emailjs.send("service","template", formData);
+        await emailjs.send("service_npcac6r","template_4dmofpf", formData);
         
         //Mail confirmation client
-        //await emailjs.send("service","template", { ...formData, to_email: formData.email });
+        await emailjs.send("service_npcac6r","template_kcuxuk7", { ...formData, to_email: formData.email });
         showToastMessage("success", stepFormulaire.toastMsg.success);
     } catch (e){
         showToastMessage("failed", stepFormulaire.toastMsg.error + JSON.stringify(e));
     }
 }
 
+function getSelectedPrestation(){
+    let userType = document.querySelector('#select-user-type input[type="checkbox"]:checked').value;
+    
+    let vehiculeType = document.querySelector('div.vehicule-type.bg-blue-500').dataset.type;
+    let vehiculeCatégorieSub = document.querySelectorAll('#select-vehicule-additionnal-options input[type="checkbox"]:checked');
+    let vehiculeAdditionnalQuestion = []
+    vehiculeCatégorieSub.forEach(choice => {
+        let question = choice.parentElement.parentElement.childNodes[0].innerText.trim();
+        let text = `${stepFormulaire.template.vehiculeQuestion} ${question.toLowerCase()}`;
+        vehiculeAdditionnalQuestion.push(text);
+
+        let response = choice.parentElement.querySelector('span').innerText.trim();
+        let answer = `${stepFormulaire.template.vehiculeResponse} ${response}`;
+        vehiculeAdditionnalQuestion.push(answer);
+    })
+
+    //Lavage intérieur
+    let lavageInterieurType = document.querySelector('div.lavage-interieur-option.bg-blue-100').dataset.type;
+    let lavageInterieurSelectedOptions = [];
+    let allLavageInterieurOptionsCheckbox = document.querySelectorAll('#select-lavage-interieur-additionnal-options input[type="checkbox"]:checked');
+    allLavageInterieurOptionsCheckbox.forEach(checkbox => {
+        let description = checkbox.parentElement.innerText.trim();
+        lavageInterieurSelectedOptions.push(description);
+    });
+    let allLavageInterieurOptionsInput = document.querySelectorAll('#select-lavage-interieur-additionnal-options input[type="text"]');
+    allLavageInterieurOptionsInput.forEach(input => {
+        if(input.value != "0"){
+            let description = `${input.value} ${input.parentElement.innerText.trim()}`;
+            lavageInterieurSelectedOptions.push(description);
+        }
+    });
+
+    //Lavage exterieur
+    let lavageExterieurType = document.querySelector('div.lavage-exterieur-option.bg-blue-100').dataset.type;
+    let lavageExterieurSelectedOptions = [];
+    let allLavageExterieurOptionsCheckbox = document.querySelectorAll('#select-lavage-exterieur-additionnal-options input[type="checkbox"]:checked');
+    allLavageExterieurOptionsCheckbox.forEach(checkbox => {
+        let description = checkbox.parentElement.innerText.trim();
+        lavageExterieurSelectedOptions.push(description);
+    });
+    let allLavageExterieurOptionsInput = document.querySelectorAll('#select-lavage-exterieur-additionnal-options input[type="text"]');
+    allLavageExterieurOptionsInput.forEach(input => {
+        if(input.value == "0"){
+            let description = `${input.value} ${input.parentElement.innerText.trim()}`;
+            lavageExterieurSelectedOptions.push(description);
+        }
+    });
+
+    let interventionTime = document.getElementById('total-time').innerText.trim();
+    let price = document.getElementById('total-price').innerText.trim();
+
+    //Resumé
+    let msg = []
+    msg.push(`${stepFormulaire.template.user} ${userType}`);
+    msg.push(`${stepFormulaire.template.vehicule} ${vehiculeType}`);
+    if(vehiculeAdditionnalQuestion.length){
+        vehiculeAdditionnalQuestion.forEach(text => {
+            msg.push(text);
+        });
+    }
+
+    msg.push(`${stepFormulaire.template.lavageInterieur} ${lavageInterieurType}`);
+    if(lavageInterieurSelectedOptions.length){
+        msg.push(`${stepFormulaire.template.additionnal}`);
+        lavageInterieurSelectedOptions.forEach(option => {
+           msg.push(`- ${option}`);
+        });
+    } else {
+        msg.push(`${stepFormulaire.template.noAdditionnal}`);
+    }
+
+    msg.push(`${stepFormulaire.template.lavageExterieur} ${lavageExterieurType}`)
+    if(lavageExterieurSelectedOptions.length){
+        msg.push(`${stepFormulaire.template.additionnal}`);
+        lavageExterieurSelectedOptions.forEach(option => {
+            msg.push(`- ${option}`);
+        });
+    } else {
+        msg.push(`${stepFormulaire.template.noAdditionnal}`);
+    }
+
+    msg.push(`${stepFormulaire.template.interventionTime} ${interventionTime}`);
+    msg.push(`${stepFormulaire.template.price} ${price}`);
+    console.log(msg.join('\n'));//replace per <BR> for template display has HTML
+    return msg.join('\r\n');
+}
 
 async function checkFormulaire(){
     try {
@@ -493,10 +609,12 @@ async function checkFormulaire(){
         if(!validateField(comments, regexPatterns.message, stepFormulaire.toastMsg.errors.comments)) return false;
         if(!validateField(payment, regexPatterns.sujet, stepFormulaire.toastMsg.errors.payment)) return false;
 
-        const formData = { date, name, email, phone, plaque, address, zip, city, comments, payment };
+        let prestations = getSelectedPrestation();
+        const formData = { date, name, email, phone, plaque, address, zip, city, comments, payment, prestations };
         
         return await sendEmail(formData);
     } catch(error){
+        console.log(error)
         showToastMessage("failed", error.message);
     }
 }
@@ -626,7 +744,7 @@ function getFormulaireElement(){
     formulaireElement.id = 'formulaire-contact';
     formulaireElement.className = "mt-8 hidden";
     formulaireElement.innerHTML = `
-    <h2 class="text-xl font-bold mb-6">${stepFormulaire.title}</h2>
+    <h2 class="text-xl font-bold mb-6">${stepFormulaire.stepNumber}. ${stepFormulaire.title}</h2>
     <div id="formulaire-contact-form" class="space-y-6"></div>`
     return formulaireElement;
 }

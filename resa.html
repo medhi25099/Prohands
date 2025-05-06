@@ -58,25 +58,25 @@
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 30,
+                            price: 35,
                             estimatedTime: 20,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 30,
-                            estimatedTime: 20,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 120,
+                            estimatedTime: 60,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 30,
-                            estimatedTime: 20,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
                         },
@@ -96,27 +96,35 @@
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 59,
-                            estimatedTime: 40,
+                            price: 35,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 59,
-                            estimatedTime: 40,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 120,
+                            estimatedTime: 60,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 59,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
@@ -133,26 +141,26 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 15,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des roues',
-                            price: 25,
-                            estimatedTime: 15,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 179,
-                            estimatedTime: 90,
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
                             price: 199,
-                            estimatedTime: 45,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -163,26 +171,26 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 15,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des roues',
-                            price: 39,
-                            estimatedTime: 15,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 179,
-                            estimatedTime: 90,
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
+                            name: 'Revêtement céramique',
                             price: 199,
-                            estimatedTime: 45,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -207,52 +215,68 @@
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 35,
-                            estimatedTime: 20,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 130,
+                            estimatedTime: 60,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 35,
-                            estimatedTime: 20,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
                 'premium': {
                     price: 209,
-                    estimatedTime: 125,
+                    estimatedTime: 145,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 69,
-                            estimatedTime: 40,
+                            price: 35,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 69,
-                            estimatedTime: 40,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 120,
+                            estimatedTime: 60,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 69,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
@@ -269,56 +293,57 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des roues',
-                            price: 25,
-                            estimatedTime: 15,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 209,
-                            estimatedTime: 110,
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 249,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
                 },
                 'premium': {
                     price: 99,
-                    estimatedTime: 85,
+                    estimatedTime: 75,
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
-                            type: "checkbox"
-                        },
-                        2: {
-                            name: 'Nettoyage des roues',
-                            price: 39,
+                            price: 50,
                             estimatedTime: 30,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 209,
-                            estimatedTime: 110,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            price: 249,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -333,62 +358,78 @@
         const ROUTIERE_SERVICES = {
             'lavage-interieur': {
                 'standard': {
-                    price: 149,
+                    price: 139,
                     estimatedTime: 85,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
                             price: 40,
-                            estimatedTime: 30,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 40,
-                            estimatedTime: 30,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 140,
+                            estimatedTime: 75,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 40,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
                 'premium': {
-                    price: 249,
+                    price: 229,
                     estimatedTime: 160,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 79,
-                            estimatedTime: 60,
+                            price: 40,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 79,
-                            estimatedTime: 60,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 140,
+                            estimatedTime: 75,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 79,
-                            estimatedTime: 40,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
@@ -405,26 +446,27 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des roues',
-                            price: 25,
-                            estimatedTime: 15,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 249,
-                            estimatedTime: 120,
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 299,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -435,26 +477,26 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
                             name: 'Nettoyage des roues',
-                            price: 39,
-                            estimatedTime: 30,
+                            price: 29,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 249,
-                            estimatedTime: 120,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique',
+                            price: 299,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -469,62 +511,78 @@
         const SUV_SERVICES = {
             'lavage-interieur': {
                 'standard': {
-                    price: 169,
+                    price: 149,
                     estimatedTime: 100,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 45,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 35,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 45,
-                            estimatedTime: 30,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 45,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
                 'premium': {
-                    price: 289,
+                    price: 249,
                     estimatedTime: 180,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 89,
-                            estimatedTime: 60,
+                            price: 50,
+                            estimatedTime: 35,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 89,
-                            estimatedTime: 60,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 89,
-                            estimatedTime: 40,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
@@ -541,26 +599,27 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des roues',
-                            price: 25,
-                            estimatedTime: 15,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 289,
-                            estimatedTime: 140,
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 349,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -571,26 +630,26 @@
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
                             name: 'Nettoyage des roues',
-                            price: 39,
-                            estimatedTime: 30,
+                            price: 29,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 289,
-                            estimatedTime: 140,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique',
+                            price: 349,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -605,62 +664,78 @@
         const SUV_SERVICES_7_PLACES = {
             'lavage-interieur': {
                 'standard': {
-                    price: 189,
-                    estimatedTime: 120,
+                    price: 169,
+                    estimatedTime: 100,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 45,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 35,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 45,
-                            estimatedTime: 30,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 45,
-                            estimatedTime: 30,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
                 'premium': {
-                    price: 359,
-                    estimatedTime: 240,
+                    price: 279,
+                    estimatedTime: 180,
                     additionnalOpts: {
                         1: {
                             name: 'Spécial poils animaux',
-                            price: 89,
-                            estimatedTime: 60,
+                            price: 50,
+                            estimatedTime: 35,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des sièges tachés',
-                            price: 89,
-                            estimatedTime: 60,
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
                             type: "checkbox"
                         },
                         3: {
                             name: 'Traitement et nourrissage des cuirs',
-                            price: 89,
-                            estimatedTime: 40,
+                            price: 50,
+                            estimatedTime: 25,
                             type: "checkbox"
                         },
                         4: {
                             name: 'Désinfection habitacle',
-                            price: 29,
+                            price: 25,
                             estimatedTime: 15,
                             type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 10,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
                     }
                 },
@@ -672,61 +747,62 @@
             },
             'lavage-exterieur': {
                 'standard': {
-                    price: 79,
+                    price: 99,
                     estimatedTime: 70,
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
-                            name: 'Nettoyage des roues',
-                            price: 25,
-                            estimatedTime: 15,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 289,
-                            estimatedTime: 140,
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 349,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
                 },
                 'premium': {
-                    price: 149,
+                    price: 179,
                     estimatedTime: 90,
                     additionnalOpts: {
                         1: {
                             name: 'Polish (Phares)',
-                            price: 39,
-                            estimatedTime: 25,
+                            price: 50,
+                            estimatedTime: 30,
                             type: "checkbox"
                         },
                         2: {
                             name: 'Nettoyage des roues',
-                            price: 39,
-                            estimatedTime: 30,
+                            price: 29,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         3: {
-                            name: 'Polish (Carrosserie)',
-                            price: 289,
-                            estimatedTime: 140,
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
                             type: "checkbox"
                         },
                         4: {
-                            name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                            price: 199,
-                            estimatedTime: 45,
+                            name: 'Revêtement céramique',
+                            price: 349,
+                            estimatedTime: 60,
                             type: "checkbox"
                         }
                     }
@@ -745,12 +821,14 @@
         }
 
         const stepSelectUserType = {
-            title: '1. Êtes-vous :',
+            stepNumber: "1",
+            title: 'Êtes-vous :',
             choices: ["Particulier", "Professionnel"]
         }
 
         const stepSelectVehiculeType = {
-            title: "2. Choisissez le type de véhicule",
+            stepNumber: "2",
+            title: "Choisissez le type de véhicule",
             additionnalOptsTitle: "Options additionnelles (voiture)",
             choices: [
                 {
@@ -799,7 +877,8 @@
         }
 
         const stepSelectLavageInterieurType = {
-            title: "3. Lavage intérieur",
+            stepNumber: "3",
+            title: "Lavage intérieur",
             additionnalOptsTitle: "Options additionnelles (intérieur)",
             choices:[{ 
                 name: "Aucun", 
@@ -807,17 +886,18 @@
                 "data-type": "aucun"
             },{ 
                 name: "Standard", 
-                description: "Dépoussiérage de l'habitacle Aspiration des sièges, sols et du coffre Nettoyage des vitres, tableau de bord et passages du portes Nettoyage plastique",
+                description: "Dépoussiérage de l'habitacle Aspiration des sièges, des sols et du coffre Nettoyage des vitres, du tableau de bord et des passages de portes Nettoyage des plastiques",
                 "data-type": "standard"
             },{
                 name: "Premium",
-                description: "Dépoussiérage de l'habitacle Triple aspiration des sièges, sols et du coffre Nettoyage des sièges et tapis Nettoyage des vitres, tableau de bord et double nettoyage des contours du portes nettoyage plastiques + traitement plastique",
+                description: "Dépoussiérage de l'habitacle Triple aspiration des sièges, des sols et du coffre Nettoyage des sièges et des tapis Nettoyage des vitres, du tableau de bord et des bouches d’aération Nettoyage des contours des portes sNettoyage des plastiques + traitement des plastiques",
                 "data-type": "premium"
             }]
         }
 
         const stepSelectLavageExterieurType = {
-            title: "4. Lavage extérieur",
+            stepNumber: "4",
+            title: "Lavage extérieur",
             additionnalOptsTitle: "Options additionnelles (intérieur)",
             choices:[{ 
                 name: "Aucun", 
@@ -825,17 +905,18 @@
                 "data-type": "aucun"
             },{ 
                 name: "Standard", 
-                description: " Nettoyage de carrosserie, vitres, pare-brise, des phares simple",
+                description: "Nettoyage de la carrosserie Nettoyage des vitres, du pare-brise et des phares Traitement des plastiques",
                 "data-type": "standard"
             },{
                 name: "Premium",
-                description: "double Nettoyage de carrosserie, démoustication, vitres, pare-brise, des phares, brillants pneus en profondeur ",
+                description: "Nettoyage & detailing de la carrosserie, démoustication Nettoyage des vitres, du pare-brise et des phares Traitement des joints et des plastiques Brillance des pneus Nettoyage de l’intérieur de la trappe à carburant",
                 "data-type": "premium"
             }]
         }
 
         const stepFormulaire = {
-            title: "5. Finalisez votre réservation",
+            stepNumber: "5",
+            title: "Finalisez votre réservation",
             language: 'fr',//DatePicker language
             professionnel: {},
             particulier: {
@@ -874,7 +955,19 @@
                     comments: 'Veuillez entrer un message de 10 caractères ou plus dans le formulaire.',
                     payment: 'Veuillez selectionner votre type de paiement dans le formulaire.' 
                 }
-            }
+            },
+            template: {
+                user: 'Vous avez choisie une prestation en tant que:',
+                vehicule: "Pour une catégorie de type de vehicule:",
+                vehiculeQuestion: "A la question,",
+                vehiculeResponse: "Vous avez répondu:",
+                lavageInterieur: "Lavage intérieur:",
+                additionnal: 'Avec les options suplémentaire suivantes:',
+                noAdditionnal: 'Sans options suplémentaire',
+                lavageExterieur: "Lavage exterieur:",
+                interventionTime: "Temps estimé:",
+                price: "Prix:"
+            }  
         }
     </script>
     <script src="./assets/js/reservation.js"></script>

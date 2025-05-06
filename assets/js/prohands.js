@@ -45,7 +45,7 @@ function showToastMessage (type,message) {
 
 /* Navbar and footer */
 const navbarFR = {
-    proHandsLogoPath : './img/cropped-car-1-white.webp',
+    proHandsLogoPath : './img/Logo.jpg',
     activeLanguage:{
         text: "Français",
         flagPath: "./img/flags/ch.svg"
@@ -56,7 +56,7 @@ const navbarFR = {
         { path: "./it/", text: "Italien", flagPath: "./img/flags/it.svg" },
     ],
     reservationLink: {
-        path: './reservation.html',
+        path: './resa.html',
         text: 'Réserver'
     },
     navLinks:[
