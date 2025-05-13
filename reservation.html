@@ -19,7 +19,7 @@
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Pro Hands Carwash">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="./img/2024/07/logo_white.webp">
+    <meta name="twitter:image" content="/assets/img/2024/07/logo_white.webp">
     <meta name="author" content="visionnaire-agency">
     <meta name="date" content="2025-04-08">
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -29,7 +29,7 @@
     <link rel="alternate" href="/" hreflang="fr">
     <link rel="alternate" href="/en/home-english/" hreflang="en">
     <link rel="alternate" href="/de/home-deutsch/" hreflang="de">
-    <link href="./output.css" rel="stylesheet">
+    <link href="/assets/css/styles.css" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- JS -->
@@ -45,1391 +45,963 @@
 </head>
 
 <body class="bg-white font-[poppins]">
-    <header>
-        <nav class="flex flex-wrap items-center justify-between gap-4 px-6 py-6 max-w-7xl mx-auto">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="./img/cropped-car-1-white.webp" alt="Logo voiture" class="h-12" />
-            </a>
-
-            <!-- Menu desktop -->
-            <div class="hidden md:flex flex-1 justify-end space-x-8 text-md font-semibold text-gray-700">
-                <a href="./" class="text-[16px] font-semibold text-black">Accueil</a>
-                <a href="./A propos.html" class="text-[16px] font-semibold hover:text-black">A propos</a>
-                <a href="./service.html" class="text-[16px] font-semibold hover:text-black">Nos Services</a>
-            </div>
-
-            <!-- Langue + Réserver + Burger -->
-            <div class="flex items-center space-x-3 relative">
-                <!-- Langue -->
-                <div class="relative flex flex-col items-center">
-                    <button id="langButton" type="button"
-                        class="flex items-center text-base text-gray-800 hover:text-gray-600">
-                        <span class="hidden md:flex items-center">
-                            <img src="./img/flags/ch.svg" alt="FR" class="w-5 h-5 mr-1" /> Français
-                        </span>
-                        <span class="md:hidden">
-                            <img src="./img/flags/ch.svg" alt="FR" class="w-5 h-5" />
-                        </span>
-                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <ul id="langMenu"
-                        class="absolute hidden left-1/2 -translate-x-1/2 top-full mt-2 w-36 bg-white/70 backdrop-blur-sm rounded z-50 text-sm transition-all duration-300 opacity-0 translate-y-1 pointer-events-none shadow">
-                        <li>
-                            <a href="./en/reservation.html"
-                                class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
-                                <img src="./img/flags/en.svg" class="w-5 h-5 mr-2" />
-                                <span class="md:inline">English</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./de/reservation.html"
-                                class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
-                                <img src="./img/flags/de.svg" class="w-5 h-5 mr-2" />
-                                <span class="md:inline">Deutsch</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./it/service.html"
-                                class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
-                                <img src="./img/flags/it.svg" class="w-5 h-5 mr-2" />
-                                <span class="md:inline">Italien</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Réserver -->
-                <a href="./reservation.html"
-                    class="bg-[#5F524F] text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-[#4d4542] transition">Réserver</a>
-
-                <!-- Burger -->
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="bg-[#5F524F] p-2 rounded hover:bg-[#4d4542]">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Menu mobile -->
-        <div id="mobile-menu"
-            class="md:hidden hidden px-6 pt-4 pb-4 space-y-2 place-items-center text-base font-medium text-gray-700">
-            <a href="./index.html" class="block hover:text-black">Accueil</a>
-            <a href="./A propos.html" class="block hover:text-black">A propos</a>
-            <a href="./service.html" class="block hover:text-black">Nos Services</a>
-        </div>
-    </header>
-    <!-- Séparation visuelle entre navbar et contenu -->
-    <div class="h-6"></div>
-
-    <div class="max-w-6xl mx-auto bg-white p-6 rounded shadow">
-        <!-- Étape 1 : Type de client -->
-        <div id="step-1" class="mb-8">
-            <div class="flex items-center flex-wrap gap-6">
-                <h2 class="text-xl font-bold mb-0">1. Êtes-vous :</h2>
-
-                <label class="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="client-type" value="particulier" class="form-radio text-blue-600">
-                    <span class="text-gray-800">Particulier</span>
-                </label>
-
-                <label class="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="client-type" value="professionnel" class="form-radio text-blue-600">
-                    <span class="text-gray-800">Professionnel</span>
-                </label>
-            </div>
-        </div>
-        <!-- Étape 2 : Choix du véhicule -->
-
-        <h2 class="text-xl font-bold mb-4 hidden" id="car-selection-title">2. Choisissez le type de véhicule</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 hidden" id="car-type-selection">
-            <div class="category border p-4 text-center rounded cursor-pointer transition hover:shadow-lg flex flex-col"
-                data-type="citadine">
-                <!-- Partie image (75%) -->
-                <div class="flex-grow-[3] flex items-center justify-center">
-                    <img src="./img/citadine.png" alt="Citadine" class="scale-75 mb-4 mx-auto">
-                </div>
-                <!-- Partie texte (25%) -->
-                <div class="flex-grow-[1]">
-                    <p class="text-sm text-gray-700">Citadine</p>
-                    <p class="text-sm font-semibold text-gray-900">Fiat 500, Mini GP, ...</p>
-                </div>
-            </div>
-
-            <!-- Limousine -->
-            <div class="category border p-4 text-center rounded cursor-pointer transition hover:shadow-lg flex flex-col"
-                data-type="limousine">
-                <!-- Partie image (75%) -->
-                <div class="flex-grow-[3] flex items-center justify-center">
-                    <img src="./img/limousine.png" alt="Citadine" class="scale-90 mb-4 mx-auto">
-                </div>
-                <!-- Partie texte (25%) -->
-                <div class="flex-grow-[1]">
-                    <p class="text-sm font-normal text-gray-700">Limousine</p>
-                    <p class="text-sm font-semibold text-gray-900">VW Golf, Mercedes A250, ...</p>
-                </div>
-            </div>
-
-            <!-- Routière -->
-            <div class="category border p-4 text-center rounded cursor-pointer transition hover:shadow-lg flex flex-col"
-                data-type="routiere">
-                <!-- Partie image (75%) -->
-                <div class="flex-grow-[3] flex items-center justify-center">
-                    <img src="./img/routiere.png" alt="Citadine" class="scale-100 mb-4 mx-auto">
-                </div>
-                <!-- Partie texte (25%) -->
-                <div class="flex-grow-[1]">
-                    <p class="text-sm text-gray-700">Routière</p>
-                    <p class="text-sm font-semibold text-gray-900">Mercedes C250, Skoda Octavia, ...</p>
-                </div>
-            </div>
-
-
-            <!-- SUV / Monospace -->
-            <div class="category border p-4 text-center rounded cursor-pointer transition hover:shadow-lg flex flex-col"
-                data-type="suv">
-                <!-- Partie image (75%) -->
-                <div class="flex-grow-[3] flex items-center justify-center">
-                    <img src="./img/SUV_monospace.png" alt="Citadine" class="scale-110 mb-4 mx-auto">
-                </div>
-                <!-- Partie texte (25%) -->
-                <div class="flex-grow-[1]">
-                    <p class="text-sm text-gray-700">SUV / Monospace</p>
-                    <p class="text-sm font-semibold text-gray-900">Skoda Enyaq, Tesla Y, ...</p>
-                </div>
-
-            </div>
-                <!-- Options additionnelles -->
-                <div id="options-voiture" class="mt-6 ">
-                    <h3 class="font-semibold mb-2">Options additionnelles (voiture)</h3>
-                    <div id="voiture-options-container" class="space-y-2 text-sm">
-                        <!-- Options dynamiques ici -->
-                    </div>
-                </div>
-        </div>
-
-
-
-        <!-- Étape 3 : Lavage intérieur -->
-        <div id="lavage-interieur" class="mt-8 hidden">
-            <h2 class="text-xl font-bold mb-4">3. Lavage intérieur</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <!-- Aucun -->
-                <div class="lavage-int-option border p-4 rounded cursor-pointer hover:shadow" data-type="aucun">
-                    <h3 class="font-bold text-gray-800 mb-2">Aucun</h3>
-                    <p class="text-sm text-gray-600">Pas de nettoyage intérieur prévu.</p>
-                </div>
-
-                <!-- Standard -->
-                <div class="lavage-int-option border p-4 rounded cursor-pointer hover:shadow" data-type="standard"
-                    data-price="40">
-                    <h3 class="font-bold text-gray-800 mb-2">Standard</h3>
-                    <p class="text-sm text-gray-600">Dépoussiérage de l'habitacle
-                        Aspiration des sièges, sols et du coffre
-                        Nettoyage des vitres, tableau de bord et passages du portes
-                        Nettoyage plastique
-                    </p>
-                </div>
-
-                <!-- Premium -->
-                <div class="lavage-int-option border p-4 rounded cursor-pointer hover:shadow" data-type="premium"
-                    data-price="40">
-                    <h3 class="font-bold text-gray-800 mb-2">Premium</h3>
-                    <p class="text-sm text-gray-600">Dépoussiérage de l'habitacle
-                        Triple aspiration des sièges, sols et du coffre
-                        Nettoyage des sièges et tapis
-                        Nettoyage des vitres, tableau de bord et double nettoyage des contours du portes
-                        nettoyage plastiques + traitement plastique
-                    </p>
-                </div>
-            </div>
-
-            <!-- Options additionnelles -->
-            <div id="options-interieur" class="mt-6 hidden">
-                <h3 class="font-semibold mb-2">Options additionnelles (intérieur)</h3>
-                <div id="interieur-options-container" class="space-y-2 text-sm">
-                    <!-- Options dynamiques ici -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Étape 4 : Lavage extérieur -->
-        <div id="lavage-exterieur" class="mt-12 hidden">
-            <h2 class="text-xl font-bold mb-4">4. Lavage extérieur</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <!-- Aucun -->
-                <div class="lavage-ext-option border p-4 rounded cursor-pointer hover:shadow" data-type="aucun">
-                    <h3 class="font-bold text-gray-800 mb-2">Aucun</h3>
-                    <p class="text-sm text-gray-600">Pas de nettoyage extérieur prévu.</p>
-                </div>
-
-                <!-- Standard -->
-                <div class="lavage-ext-option border p-4 rounded cursor-pointer hover:shadow" data-type="standard"
-                    data-price="40">
-                    <h3 class="font-bold text-gray-800 mb-2">Standard</h3>
-                    <p class="text-sm text-gray-600">
-                        Nettoyage de carrosserie,
-                        vitres, pare-brise, des phares
-                        simple
-                    </p>
-                </div>
-
-                <!-- Premium -->
-                <div class="lavage-ext-option border p-4 rounded cursor-pointer hover:shadow" data-type="premium"
-                    data-price="40">
-                    <h3 class="font-bold text-gray-800 mb-2">Premium</h3>
-                    <p class="text-sm text-gray-600">double Nettoyage de carrosserie,
-                        démoustication, vitres, pare-brise, des phares, brillants pneus
-                        en profondeur </p>
-                </div>
-            </div>
-
-            <!-- Options additionnelles ext -->
-            <div id="options-exterieur" class="mt-6 hidden">
-                <h3 class="font-semibold mb-2">Options additionnelles (extérieur)</h3>
-                <div id="exterieur-options-container" class="space-y-2 text-sm">
-                    <!-- Options dynamiques ici -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Étape 5 : Formulaire moderne -->
-        <div id="formulaire-contact" class="mt-12 hidden">
-            <h2 class="text-xl font-bold mb-6">5. Finalisez votre réservation</h2>
-
-            <form class="space-y-6">
-                <!-- Date et heure de réservation -->
-                <div class="relative">
-                    <input type="text" id="date-heure" name="date-heure" required
-                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder=" " />
-                    <label for="date-heure"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                        Date et heure de réservation</label>
-                </div>
-                <!-- Nom complet et Email -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <input type="text" id="nom" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="nom"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Nom complet</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="email" id="email" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="email"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Email</label>
-                    </div>
-                </div>
-
-                <!-- Téléphone et Plaque -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <input type="tel" id="tel" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="tel"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Téléphone</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="text" id="plaque"
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="plaque"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Marque et modéle du véhicule</label>
-                    </div>
-                </div>
-
-                <!-- Adresse, Code postal et Ville -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="relative col-span-1 md:col-span-3">
-                        <input type="text" id="adresse" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="adresse"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Adresse</label>
-                    </div>
-                </div>
-                <!--Ville COde postale -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <input type="tel" id="zip" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="tel"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Code postale</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="text" id="ville" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="plaque"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Ville</label>
-                    </div>
-                </div>
-
-                <!-- Remarques -->
-                <div class="relative">
-                    <textarea id="remarques" rows="4"
-                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-transparent"
-                        placeholder=" "></textarea>
-                    <label for="remarques"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                        Remarques (facultatif)</label>
-                </div>
-                <!-- Moyen de paiement -->
-                <div class="relative">
-                    <label for="payment-method"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500 mb-2">
-                        Moyen de paiement
-                    </label>
-                    <select id="payment-method" name="payment-method" required
-                        class="peer w-full border border-gray-300 rounded px-4 pt-6 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option value="" disabled selected>Choisir un moyen de paiement</option>
-                        <option value="cash">Cash</option>
-                        <option value="twint">Twint</option>
-                        <option value="terminal">Terminal</option>
-                    </select>
-                </div>
-                <!-- Bouton -->
-                <div>
-                    <button type="submit"
-                        class="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all">Réserver
-                        maintenant</button>
-                </div>
-            </form>
-        </div>
-        <div id="formulaire-contact" class="mt-12 hidden">
-            <h2 class="text-xl font-bold mb-6">5. Finalisez votre réservation</h2>
-
-            <form class="space-y-6">
-                <!-- Date et heure de réservation -->
-                <div class="relative">
-                    <input type="text" id="date-heure" name="date-heure" required
-                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder=" " />
-                    <label for="date-heure"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                        Date et heure de réservation</label>
-                </div>
-                <!-- Nom complet et Email -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <input type="text" id="nom" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="nom"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Nom complet</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="email" id="email" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="email"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Email</label>
-                    </div>
-                </div>
-
-                <!-- Téléphone et Plaque -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <input type="tel" id="tel" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="tel"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Téléphone</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="text" id="plaque"
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="plaque"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Marque et modéle du véhicule</label>
-                    </div>
-                </div>
-
-                <!-- Adresse, Code postal et Ville -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="relative col-span-1 md:col-span-3">
-                        <input type="text" id="adresse" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="adresse"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Adresse</label>
-                    </div>
-                </div>
-                <!--Ville COde postale -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="relative">
-                        <input type="tel" id="zip" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="tel"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Code postale</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="text" id="ville" required
-                            class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder=" " />
-                        <label for="plaque"
-                            class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                            Ville</label>
-                    </div>
-                </div>
-
-                <!-- Remarques -->
-                <div class="relative">
-                    <textarea id="remarques" rows="4"
-                        class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-transparent"
-                        placeholder=" "></textarea>
-                    <label for="remarques"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                        Remarques (facultatif)</label>
-                </div>
-                <!-- Moyen de paiement -->
-                <div class="relative">
-                    <label for="payment-method"
-                        class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500 mb-2">
-                        Moyen de paiement
-                    </label>
-                    <select id="payment-method" name="payment-method" required
-                        class="peer w-full border border-gray-300 rounded px-4 pt-6 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option value="" disabled selected>Choisir un moyen de paiement</option>
-                        <option value="cash">Cash</option>
-                        <option value="twint">Twint</option>
-                        <option value="terminal">Terminal</option>
-                    </select>
-                </div>
-                <!-- Bouton -->
-                <div>
-                    <button type="submit"
-                        class="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all">Réserver
-                        maintenant</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="col-span-1 md:col-span-2 hidden">
-            <div class="text-right font-bold text-lg mb-2">
-                Temps estimée : <span id="total-time">0 min</span>
-            </div>
-            <div class="text-right font-bold text-lg mb-2">
-                Total à payer : <span id="total-price">CHF 0.00</span>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- ===== FOOTER FULL WIDTH AT BOTTOM ===== -->
-    <footer class="w-full text-black text-sm bg-[#bcbcbc] bg-no-repeat bg-top bg-cover bg-[url('./img/footer.png')]">
-        <div class="relative z-10 py-14 bg-[#bcbcbc]/80 ">
-            <div
-                class="w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:justify-center md:items-start gap-10">
-                <!-- Bloc 1 - Logo & Texte -->
-                <div class="flex-1 text-center">
-                    <h2 class="font-bold text-lg mb-1">Prohands Carwash</h2>
-                    <p class="uppercase text-base leading-tight">CRÉÉ AFIN DE RÉVOLUTIONNER LE<br> SOIN AUTOMOBILE</p>
-                    <div class="my-4">
-                        <img src="./img/cropped-car-1-white.webp" alt="Voiture" class="mx-auto w-[120px]">
-                    </div>
-                    <div class="flex justify-center space-x-4">
-                        <a href="https://www.facebook.com/people/Pro-Hands-CarWash/61554807187710/" target="_blank"><i
-                                class="fa-brands fa-facebook text-2xl"></i></a>
-                        <a href="https://www.instagram.com/pro_hands_carwash" target="_blank"><i
-                                class="fa-brands fa-instagram text-2xl"></i></a>
-                        <a href="https://www.tiktok.com/@prohands_carwash" target="_blank"><i
-                                class="fa-brands fa-tiktok text-2xl"></i></a>
-                    </div>
-                </div>
-
-                <!-- Bloc 2 - Informations -->
-                <div class="flex-1 text-center">
-                    <h3 class="font-bold text-lg mb-2">Informations</h3>
-                    <ul class="space-y-2 text-base">
-                        <li class="flex justify-center items-center gap-2"><i class="fa-solid fa-phone"></i><span>+41 79
-                                322 11 75</span>
-                        </li>
-                        <li class="flex justify-center items-center gap-2"><i
-                                class="fa-solid fa-envelope"></i><span>info@prohands-carwash.ch</span></li>
-                        <li class="flex justify-center items-center gap-2"><i
-                                class="fa-solid fa-location-dot"></i><span>villars-sur-Glâne</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Bloc 3 - Pages et bouton -->
-                <div class="flex-1 text-center">
-                    <h3 class="font-bold text-lg mb-2">Pages</h3>
-                    <ul class="space-y-2 text-base">
-                        <li class="flex justify-center items-center gap-2"><span>›</span><a href="./index.html"
-                                class="hover:underline">Page
-                                d'accueil</a></li>
-                        <li class="flex justify-center items-center gap-2"><span>›</span><a href="./A propos.html"
-                                class="hover:underline">À
-                                propos de nous</a></li>
-                        <li class="flex justify-center items-center gap-2"><span>›</span><a href="./service.html"
-                                class="hover:underline">Nos
-                                services</a></li>
-                    </ul>
-                    <div class="mt-4">
-                        <a href="./reservation.html"
-                            class="inline-block bg-black text-white text-sm font-bold px-5 py-2">Réserver Un
-                            Nettoyage</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <header id="header"></header>
+    <div id="steps-container"></div>
+    <footer id="footer"></footer>
+    <script src="./assets/js/prohands.js"></script>
     <script>
-        /* Navbar area */
-        const langButton = document.getElementById('langButton');
-        const langMenu = document.getElementById('langMenu');
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        langButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('hidden');
-            if (!langMenu.classList.contains('hidden')) {
-                langMenu.classList.remove('opacity-0', 'translate-y-1', 'pointer-events-none');
-                langMenu.classList.add('opacity-100', 'translate-y-0');
-            } else {
-                langMenu.classList.add('opacity-0', 'translate-y-1', 'pointer-events-none');
-                langMenu.classList.remove('opacity-100', 'translate-y-0');
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!langButton.contains(e.target) && !langMenu.contains(e.target)) {
-                langMenu.classList.add('hidden', 'opacity-0', 'translate-y-1', 'pointer-events-none');
-                langMenu.classList.remove('opacity-100', 'translate-y-0');
-            }
-        });
-
-        menuToggle.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-
-        /* Datetime picker init */
-        flatpickr("#date-heure", {
-            enableTime: true,
-            dateFormat: "d-m-Y H:i",
-            time_24hr: true,
-            minDate: "today",
-            locale: flatpickr.l10ns.fr,
-            disable: [
-                function (date) {
-                    return date.getDay() === 0;
-                }
-            ]
-        });
-
-        /* Options selector builder */
-        const vehiclesCategorie = document.querySelectorAll('.category');
-        const totalPriceDisplay = document.getElementById('total-price');
-        const totalTimeDisplay = document.getElementById('total-time');
-        const lavageInterieur = document.getElementById('lavage-interieur');
-        const lavageIntOptions = document.querySelectorAll('.lavage-int-option');
-        const optionsIntDiv = document.getElementById('options-interieur');
-        const intOptionsContainer = document.getElementById('interieur-options-container');
-        const lavageExtSection = document.getElementById('lavage-exterieur');
-        const formulaireContact = document.getElementById('formulaire-contact');
-        const lavageExtOptions = document.querySelectorAll('.lavage-ext-option');
-        const optionsExtDiv = document.getElementById('options-exterieur');
-        const extOptionsContainer = document.getElementById('exterieur-options-container');
-        const allCheckboxSubOptions = document.querySelectorAll("[type='checkbox']:checked");
-        const allInputSubOptions = document.querySelectorAll("[type='text']");
-
-        let selectedVehicleType = '';
-        let total = 0;
-        let totalTime = 0;
-
-        let vehiculeTypePrice = {
-            'suv': {
-                'Lavage intérieur': {
-                    'standard': {
-                        price: 169,
-                        estimatedTime: 100,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 45,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 45,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 45,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
+        const CITADINE_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 119,
+                    estimatedTime: 60,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 120,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
-                    },
-                    'premium': {
-                        price: 289,
-                        estimatedTime: 180,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 89,
-                                estimatedTime: 60,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 89,
-                                estimatedTime: 60,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 89,
-                                estimatedTime: 40,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
                 },
-                'Lavage extérieur': {
-                    'standard': {
-                        price: 79,
-                        estimatedTime: 70,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 25,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 25,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 289,
-                                estimatedTime: 140,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
+                'premium': {
+                    price: 189,
+                    estimatedTime: 120,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 120,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
-                    },
-                    'premium': {
-                        price: 149,
-                        estimatedTime: 90,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 25,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 39,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 289,
-                                estimatedTime: 140,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
                 },
-                'additionnalOps' :{
-                    question: 'Avez vous un véhicule 7 places ?',
-                    reponse1: 'Oui',
-                    reponse2: 'Non'
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
                 }
             },
-            'routiere': {
-                'Lavage intérieur': {
-                    'standard': {
-                        price: 149,
-                        estimatedTime: 85,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 40,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 40,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 40,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
+            'lavage-exterieur': {
+                'standard': {
+                    price: 49,
+                    estimatedTime: 40,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.', 
+                            price: 199,
+                            estimatedTime: 60,
+                            type: "checkbox"
                         }
-                    },
-                    'premium': {
-                        price: 249,
-                        estimatedTime: 160,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 79,
-                                estimatedTime: 60,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 79,
-                                estimatedTime: 60,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 79,
-                                estimatedTime: 40,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
                 },
-                'Lavage extérieur': {
-                    'standard': {
-                        price: 69,
-                        estimatedTime: 60,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 25,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 25,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 249,
-                                estimatedTime: 120,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
+                'premium': {
+                    price: 79,
+                    estimatedTime: 75,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 199,
+                            estimatedTime: 60,
+                            type: "checkbox"
                         }
-                    },
-                    'premium': {
-                        price: 119,
-                        estimatedTime: 90,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 25,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 39,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 249,
-                                estimatedTime: 120,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const LIMOUSINE_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 129,
+                    estimatedTime: 70,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 130,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'premium': {
+                    price: 209,
+                    estimatedTime: 145,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 35,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 120,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
                 }
             },
-            'limousine': {
-                'Lavage intérieur': {
-                    'standard': {
-                        price: 129,
-                        estimatedTime: 70,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 35,
-                                estimatedTime: 20,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 35,
-                                estimatedTime: 20,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 35,
-                                estimatedTime: 20,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
+            'lavage-exterieur': {
+                'standard': {
+                    price: 59,
+                    estimatedTime: 50,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 249,
+                            estimatedTime: 60,
+                            type: "checkbox"
                         }
-                    },
-                    'premium': {
-                        price: 209,
-                        estimatedTime: 125,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 69,
-                                estimatedTime: 40,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 69,
-                                estimatedTime: 40,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 69,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
                 },
-                'Lavage extérieur': {
-                    'standard': {
-                        price: 59,
-                        estimatedTime: 50,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 25,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 25,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 209,
-                                estimatedTime: 110,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
+                'premium': {
+                    price: 99,
+                    estimatedTime: 75,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 249,
+                            estimatedTime: 60,
+                            type: "checkbox"
                         }
-                    },
-                    'premium': {
-                        price: 99,
-                        estimatedTime: 85,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 25,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 39,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 209,
-                                estimatedTime: 110,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const ROUTIERE_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 139,
+                    estimatedTime: 85,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 140,
+                            estimatedTime: 75,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'premium': {
+                    price: 229,
+                    estimatedTime: 160,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 40,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 140,
+                            estimatedTime: 75,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
                 }
             },
-            'citadine': {
-                'Lavage intérieur': {
-                    'standard': {
-                        price: 119,
-                        estimatedTime: 60,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 30,
-                                estimatedTime: 20,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 30,
-                                estimatedTime: 20,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 30,
-                                estimatedTime: 20,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            5: {
-                                name: 'Lavage siege(s)',
-                                price: 10,
-                                estimatedTime: 5,
-                                type: "input",
-                                minValue: 0,
-                                maxValue: 7
-                            }
+            'lavage-exterieur': {
+                'standard': {
+                    price: 69,
+                    estimatedTime: 60,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 299,
+                            estimatedTime: 60,
+                            type: "checkbox"
                         }
-                    },
-                    'premium': {
-                        price: 189,
-                        estimatedTime: 120,
-                        additionnalOps: {
-                            1: {
-                                name: 'Spécial poils animaux',
-                                price: 59,
-                                estimatedTime: 40,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des sièges tachés',
-                                price: 59,
-                                estimatedTime: 40,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Traitement et nourrissage des cuirs',
-                                price: 59,
-                                estimatedTime: 30,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Désinfection habitacle',
-                                price: 29,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            }
-                        }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
                 },
-                'Lavage extérieur': {
-                    'standard': {
-                        price: 49,
-                        estimatedTime: 40,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 25,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 179,
-                                estimatedTime: 90,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
+                'premium': {
+                    price: 119,
+                    estimatedTime: 90,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.', 
+                            price: 299,
+                            estimatedTime: 60,
+                            type: "checkbox"
                         }
-                    },
-                    'premium': {
-                        price: 79,
-                        estimatedTime: 75,
-                        additionnalOps: {
-                            1: {
-                                name: 'Polish (Phares)',
-                                price: 39,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            2: {
-                                name: 'Nettoyage des roues',
-                                price: 39,
-                                estimatedTime: 15,
-                                type: "checkbox"
-                            },
-                            3: {
-                                name: 'Polish (Carrosserie)',
-                                price: 179,
-                                estimatedTime: 90,
-                                type: "checkbox"
-                            },
-                            4: {
-                                name: 'Waxoyl (protection de peinture & carrosserie et anti-pluie)',
-                                price: 199,
-                                estimatedTime: 45,
-                                type: "checkbox"
-                            }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const SUV_SERVICES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 149,
+                    estimatedTime: 100,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 50,
+                            estimatedTime: 35,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
                         }
-                    },
-                    'aucun': {
-                        price: 0,
-                        estimatedTime: 0,
-                        additionnalOps: {}
                     }
+                },
+                'premium': {
+                    price: 249,
+                    estimatedTime: 180,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 50,
+                            estimatedTime: 35,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 79,
+                    estimatedTime: 70,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 349,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 149,
+                    estimatedTime: 90,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 349,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            }
+        }
+        const SUV_SERVICES_7_PLACES = {
+            'lavage-interieur': {
+                'standard': {
+                    price: 169,
+                    estimatedTime: 100,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 50,
+                            estimatedTime: 35,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'premium': {
+                    price: 279,
+                    estimatedTime: 180,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Spécial poils animaux',
+                            price: 50,
+                            estimatedTime: 35,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Shampoing des sièges + tapis offert',
+                            price: 150,
+                            estimatedTime: 90,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Traitement et nourrissage des cuirs',
+                            price: 50,
+                            estimatedTime: 25,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Désinfection habitacle',
+                            price: 25,
+                            estimatedTime: 15,
+                            type: "checkbox"
+                        },
+                        5: {
+                            name: 'Lavage siege(s)',
+                            price: 35,
+                            estimatedTime: 5,
+                            type: "input",
+                            minValue: 0,
+                            maxValue: 7
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
+                }
+            },
+            'lavage-exterieur': {
+                'standard': {
+                    price: 99,
+                    estimatedTime: 70,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage des roues & brillant pneus',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique', //rajouter un system pour le en savoir plus avec une explcation du produit 
+                            tootips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 349,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'premium': {
+                    price: 179,
+                    estimatedTime: 90,
+                    additionnalOpts: {
+                        1: {
+                            name: 'Polish (Phares)',
+                            price: 50,
+                            estimatedTime: 30,
+                            type: "checkbox"
+                        },
+                        2: {
+                            name: 'Nettoyage des roues',
+                            price: 29,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        3: {
+                            name: 'Nettoyage et brillance des chromes',
+                            price: 40,
+                            estimatedTime: 20,
+                            type: "checkbox"
+                        },
+                        4: {
+                            name: 'Revêtement céramique',
+                            tooltips: 'Le revêtement Crystal Coating confère à la couche de peinture un écran protecteur haute brillant pour votre voiture. La peinture est ainsi très résistante aux agressions extérieures telles que les rayons UV, les pluies acides et le sel de déneigement.',
+                            price: 349,
+                            estimatedTime: 60,
+                            type: "checkbox"
+                        }
+                    }
+                },
+                'aucun': {
+                    price: 0,
+                    estimatedTime: 0,
+                    additionnalOpts: {}
                 }
             }
         }
 
-        const hideElement = (elem) => elem.classList.add('hidden');
-        const displayElement = (elem) => elem.classList.remove('hidden');
-        const addActiveElement = (elem) => elem.classList.add('bg-blue-100', 'border-blue-500');
-        const removeActiveElement = (elem) => elem.classList.remove('bg-blue-100', 'border-blue-500');
-        const eraseInnerHtmlElement = (elem) => elem.innerHTML = '';
-        const setPriceElement = (elem, value) => elem.setAttribute('data-price', value);
-        const setTimeElement = (elem, value) => elem.setAttribute('data-time', value);
-
-        function resetAllElement() {
-            [lavageInterieur, optionsIntDiv, lavageExtSection, optionsExtDiv, formulaireContact].forEach(hideElement);
-            [lavageIntOptions, lavageExtOptions].forEach(elements => { elements.forEach(removeActiveElement) });
-            [intOptionsContainer, extOptionsContainer].forEach(eraseInnerHtmlElement)
+        const totalContainerInfos = {
+            messageTime: 'Temps estimée : ',
+            messagePrice: 'Total à payer : '
         }
 
-        function updateNextPrestationOptions(element, vehiculeType, optsType) {
-            element.forEach(btn => {
-                let prestationType = btn.getAttribute('data-type');
-                if (prestationType !== "aucun") {
-                    let prestationPrice = vehiculeTypePrice[vehiculeType][optsType][prestationType].price;
-                    btn.querySelector('.price-display')?.remove();
-                    const priceTag = document.createElement('p');
-                    priceTag.className = 'price-display text-sm font-semibold text-blue-600 mt-2';
-                    priceTag.textContent = `CHF ${prestationPrice}`;
-                    btn.appendChild(priceTag);
-                }
-            })
+        const stepSelectUserType = {
+            stepNumber: "1",
+            title: 'Êtes-vous :',
+            choices: ["Particulier", "Professionnel"]
         }
 
-        function updatePrestationSubOptions(button, subOptsContainer, actualPrestationOptsElem, vehiculeType, optsType) {
-            displayElement(actualPrestationOptsElem);
-            eraseInnerHtmlElement(subOptsContainer);
-            let prestationType = button.dataset.type;
-            if (prestationType !== "aucun") {
-                let prix = vehiculeTypePrice[vehiculeType][optsType][prestationType].price;
-                setPriceElement(button, prix);
-
-                let time = vehiculeTypePrice[vehiculeType][optsType][prestationType].estimatedTime;
-                setTimeElement(button, time);
-
-                //let innerHtmlOptions = '';
-                subOptsContainer.innerHTML = '';
-
-                let availablesOptions = vehiculeTypePrice[vehiculeType][optsType][prestationType].additionnalOps;
-
-                for (let option of Object.values(availablesOptions)) {
-                    let container = document.createElement('label');
-                    container.className = `flex items-center`;
-                    if (option.type === "checkbox") {
-                        let inputEl = document.createElement('input');
-                        inputEl.setAttribute('type', 'checkbox');
-                        inputEl.className = "mr-2";
-                        setPriceElement(inputEl, option.price);
-                        setTimeElement(inputEl, option.estimatedTime);
-                        //innerHtmlOptions += `<label class="block"><input type="checkbox" class="mr-2" data-price="${option.price}" data-time="${option.estimatedTime}"> ${option.name} (CHF ${option.price})</label>`
-                        container.appendChild(inputEl);
+        const stepSelectVehiculeType = {
+            stepNumber: "2",
+            title: "Choisissez le type de véhicule",
+            additionnalOptsTitle: "Options additionnelles (voiture)",
+            choices: [
+                {
+                    name: "Citadine",
+                    description: "Fiat 500, Mini GP, ...",
+                    imgPath: "/assets/img/citadine.png",
+                    imgScale: "75",
+                    'data-type': "citadine",
+                    services: CITADINE_SERVICES,
+                    additionnalInfo: false
+                },
+                {
+                    name: "Limousine",
+                    description: "VW Golf, Mercedes A250, ...",
+                    imgPath: "/assets/img/limousine.png",
+                    imgScale: "90",
+                    'data-type': "limousine",
+                    services: LIMOUSINE_SERVICES,
+                    additionnalInfo: false
+                },
+                {
+                    name: "Routière & petit SUV",
+                    description: "VW Passat, Audi Q2, ...",
+                    imgPath: "/assets/img/routiere.png",
+                    imgScale: "100",
+                    'data-type': "routiere",
+                    services: ROUTIERE_SERVICES,
+                    additionnalInfo: false
+                },
+                {
+                    name: "Grande SUV & 7 Places",
+                    description: "Skoda Enyaq, Tesla Y, ...",
+                    imgPath: "/assets/img/SUV_monospace.png",
+                    imgScale: "110",
+                    'data-type': "suv",
+                    services: SUV_SERVICES,
+                    additionnalOpts: {
+                        question: 'Avez vous un véhicule 7 places ?',
+                        choices: [
+                            { text: 'Oui', services: SUV_SERVICES_7_PLACES },
+                            { text: 'Non', services: SUV_SERVICES }
+                        ]
                     }
-                    else if (option.type === "input") {
-                        let inputEl = document.createElement('input');
-                        inputEl.setAttribute('type', 'text');
-                        inputEl.className = "shrink-0 text-gray-900 border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[1.5rem] text-center";
-                        inputEl.setAttribute('value', '0');
-                        setPriceElement(inputEl, 0);
-                        setTimeElement(inputEl, 0);
-
-                        let btnDown = document.createElement('button');
-                        btnDown.setAttribute('type', 'button');
-                        btnDown.className = "shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-                        btnDown.innerHTML = `
-                            <svg class="w-2.5 h-2.5 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
-                            </svg>
-                        `;
-                        btnDown.addEventListener('click', () => {
-                            let actualValue = parseInt(inputEl.value);
-                            if (actualValue > option.minValue) {
-                                let newValue = actualValue - 1;
-                                inputEl.setAttribute('value', newValue);
-                                setPriceElement(inputEl, `${option.price * newValue}`);
-                                setTimeElement(inputEl, `${option.estimatedTime * newValue}`);
-                            }
-                        });
-
-                        let btnUp = document.createElement('button');
-                        btnUp.setAttribute('type', 'button');
-                        btnUp.className = "mr-2 shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none";
-                        btnUp.innerHTML = `
-                            <svg class="w-2.5 h-2.5 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                            </svg>
-                        `;
-                        btnUp.addEventListener('click', () => {
-                            let actualValue = parseInt(inputEl.value);
-                            if (actualValue < option.maxValue) {
-                                let newValue = actualValue + 1;
-                                inputEl.setAttribute('value', newValue);
-                                setPriceElement(inputEl, `${option.price * newValue}`);
-                                setTimeElement(inputEl, `${option.estimatedTime * newValue}`);
-                            }
-                        });
-                        [btnDown, inputEl, btnUp].forEach(e => container.appendChild(e));
-                    }
-                    container.insertAdjacentText("beforeend", `${option.name} (CHF ${option.price})`);
-                    subOptsContainer.appendChild(container);
                 }
-                //subOptsContainer.innerHTML = innerHtmlOptions;
-            } else {
-                hideElement(actualPrestationOptsElem);
-            }
-        }
-
-        document.querySelectorAll('input[name="client-type"]').forEach((radio) => {
-            radio.addEventListener('change', () => {
-                document.getElementById('car-type-selection').classList.remove('hidden');
-                document.getElementById('car-selection-title').classList.remove('hidden');
-            });
-        });
-
-        // Clic sur type de véhicule
-        function hookVehiculeTypes(vehicle) {
-            vehicle.addEventListener('click', () => {
-                resetAllElement();
-                selectedVehicleType = vehicle.dataset.type;
-
-                vehiclesCategorie.forEach(v => v.classList.remove('bg-blue-500', 'text-white'));
-                vehicle.classList.add('bg-blue-500', 'text-white');
-
-                displayElement(lavageInterieur);
-                displayElement(totalPriceDisplay.parentElement.parentElement);
-                updateNextPrestationOptions(lavageIntOptions, selectedVehicleType, 'Lavage intérieur');
-            });
-        }
-        vehiclesCategorie.forEach(hookVehiculeTypes);
-
-        // Clic sur type de lavage intérieur
-        function hookPrestationLavageInterrieur(btn) {
-            btn.addEventListener('click', () => {
-                lavageIntOptions.forEach(removeActiveElement);
-                addActiveElement(btn);
-                updateNextPrestationOptions(lavageExtOptions, selectedVehicleType, 'Lavage extérieur');
-                updatePrestationSubOptions(btn, intOptionsContainer, optionsIntDiv, selectedVehicleType, 'Lavage intérieur');
-                displayElement(lavageExtSection);
-            });
-        }
-        lavageIntOptions.forEach(hookPrestationLavageInterrieur);
-
-        // Clic sur type de lavage exterieur
-        function hookPrestationLavageExterieur(btn) {
-            btn.addEventListener('click', () => {
-                lavageExtOptions.forEach(removeActiveElement);
-                addActiveElement(btn);
-                updatePrestationSubOptions(btn, extOptionsContainer, optionsExtDiv, selectedVehicleType, 'Lavage extérieur');
-                displayElement(formulaireContact);
-            })
-        }
-        lavageExtOptions.forEach(hookPrestationLavageExterieur);
-
-        function timeConverter(time) {
-            const hours = Math.floor(time / 60);
-            const minutes = time % 60;
-            return `${hours}h${String(minutes).padStart(2, "0")}m`;
-        }
-
-        function updateTotal() {
-            total = 0;
-            totalTime = 0;
-
-            const updateElementInfos = (element) => {
-                total += parseFloat(element.dataset.price || 0);
-                totalTime += parseFloat(element.dataset.time || 0);
-            }
-
-            let selectorClassnameArray = [
-                '.lavage-int-option.bg-blue-100',// Lavage intérieur
-                '.lavage-ext-option.bg-blue-100' // Lavage extérieur
             ]
-            selectorClassnameArray.forEach(className => {
-                let element = document.querySelector(className);
-                if (element) updateElementInfos(element);
-            });
-
-            let selectorAllClassnameArray = [
-                // Options intérieures
-                '#interieur-options-container input[type="text"]',
-                '#interieur-options-container input[type="checkbox"]:checked',
-                // Options extérieures
-                '#exterieur-options-container input[type="text"]',
-                '#exterieur-options-container input[type="checkbox"]:checked'
-            ]
-            selectorAllClassnameArray.forEach(className => {
-                document.querySelectorAll(className).forEach(updateElementInfos);
-            });
-            totalPriceDisplay.innerText = `CHF ${total.toFixed(2)}`;
-            totalTimeDisplay.innerText = timeConverter(totalTime);
         }
 
-        // Mise à jour du total à chaque interaction
-        document.addEventListener('change', updateTotal);
-        document.addEventListener('click', updateTotal);
+        const stepSelectLavageInterieurType = {
+            stepNumber: "3",
+            title: "Nettoyage intérieur",
+            additionnalOptsTitle: "Options additionnelles (intérieur)",
+            choices:[{ 
+                name: "Aucun", 
+                description: "Pas de nettoyage intérieur prévu.",
+                "data-type": "aucun"
+            },{ 
+                name: "Standard", 
+                description: "Dépoussiérage de l'habitacle Aspiration des sièges, des sols et du coffre Nettoyage des vitres, du tableau de bord et des passages de portes Nettoyage des plastiques",
+                "data-type": "standard"
+            },{
+                name: "Premium",
+                description: "Dépoussiérage de l'habitacle Triple aspiration des sièges, des sols et du coffre Nettoyage des sièges et des tapis Nettoyage des vitres, du tableau de bord et des bouches d’aération Nettoyage des contours des portes sNettoyage des plastiques + traitement des plastiques",
+                "data-type": "premium"
+            }]
+        }
+
+        const stepSelectLavageExterieurType = {
+            stepNumber: "4",
+            title: "Nettoyage extérieur",
+            additionnalOptsTitle: "Options additionnelles (exterieur)",
+            choices:[{ 
+                name: "Aucun", 
+                description: "Pas de nettoyage extérieur prévu.",
+                "data-type": "aucun"
+            },{ 
+                name: "Standard", 
+                description: "Nettoyage de la carrosserie Nettoyage des vitres, du pare-brise et des phares Traitement des plastiques",
+                "data-type": "standard"
+            },{
+                name: "Premium",
+                description: "Nettoyage & detailing de la carrosserie, démoustication Nettoyage des vitres, du pare-brise et des phares Traitement des joints et des plastiques Brillance des pneus Nettoyage de l’intérieur de la trappe à carburant",
+                "data-type": "premium"
+            }]
+        }
+
+        const stepFormulaire = {
+            stepNumber: {
+                particulier: "5",
+                professionnel: "2"
+            },
+            title: "Finalisez votre réservation",
+            language: 'fr',//DatePicker language
+            cgv: {
+                before: 'J’ai lu et j’accepte les ',
+                after: 'conditions générales de vente'
+            },
+            dataAllow: 'J’autorise le traitement de mes données personnelles.',
+            datePicker: "Data et heure de réservation",
+            name: "Nom complet",
+            entrepriseName: 'Nom de l’entreprise',
+            nide: 'Numéro IDE',
+            email: "Email",
+            personContact: 'Personne de contact',
+            emailPro : 'Email Professionnel',
+            phone: "Téléphone",
+            infos: "Marque et modéle du véhicule",
+            add: "Addresse",
+            nip: "NIP",
+            city: "Ville",
+            vehiculeCount: 'Nombre de véhicule à nettoyer',
+            vehiculeType: 'Type de véhicule',
+            servicesType: 'Type de service a éffectué (interieur,exterieur ....)',
+            interventionLocation: "Lieu d'intervention",
+            comment: "Remarques (facultatif)",
+            payments:{
+                label: "Moyen de paiement",
+                labelAlt: 'Choisir un moyen de paiement',
+                options:[
+                    { name: "Cash", imgPath: "" },
+                    { name: "Twint", imgPath: "" },
+                    { name: "Terminal", imgPath: "" }
+                ] 
+            },
+            button: 'Réserver maintenant',
+            toastMsg:{
+                success: 'Votre réservation a été envoyé avec succès!',
+                error: "Une erreur est survenue. Veuillez réessayer plus tard.",
+                errors: {
+                    date: 'Veuillez sélectionner une date dans le formulaire.',
+                    name: 'Veuillez entrer un nom dans le formulaire.',
+                    pContact: 'Veuillez entrer une personne à contacter dans le formulaire.',
+                    nbVehicule: 'Veuillez entrer le nombre de véhicules à nettoyer dans le formulaire.',
+                    typeVehicule: 'Veuillez entrer le type de véhicules à nettoyer dans le formulaire.',
+                    prestationType: 'Veuillez entrer les perstations à effectuer dans le formulaire.',
+                    interventionLocation: "Veuillez entrer un lieu d'intervention dans le formulaire.",
+                    email: 'Veuillez entrer un email dans le formulaire.',
+                    phone: 'Veuillez entrer un numéro de téléphone dans le formulaire.',
+                    plaque: 'Veuillez entrer votre marque et modèle de véhicule dans le formulaire.',
+                    address: 'Veuillez entrer votre adresse dans le formulaire.',
+                    zip: 'Veuillez entrer votre ZIP dans le formulaire.',
+                    city: 'Veuillez entrer votre ville dans le formulaire.',
+                    comments: 'Veuillez entrer un message de 10 caractères ou plus dans le formulaire.',
+                    payment: 'Veuillez selectionner votre type de paiement dans le formulaire.' 
+                }
+            },
+            template: {
+                user: 'Vous avez choisi une prestation en tant que:',
+                interventionLocation: "Lieu d'intervention:",
+                nide: 'Numéro IDE:',
+                pContact: 'Personne à contacter:',
+                prestationType: 'Type de service à éffectuer:',
+                marqueModel: 'Modèle / Marque:',
+                vehicule: "Pour une catégorie de type de véhicule:",
+                vehiculeCount: "véhicules seront à nettoyer.",
+                vehiculeQuestion: "À la question,",
+                vehiculeResponse: "Vous avez répondu:",
+                lavageInterieur: "Lavage intérieur:",
+                additionnal: 'Avec les options supplémentaires suivantes:',
+                noAdditionnal: 'Sans options supplémentaire',
+                lavageExterieur: "Lavage extérieur:",
+                interventionTime: "Temps estimé:",
+                price: "Prix:",
+                payment: "Moyen de paiement :"
+            }  
+        }
     </script>
+    <script src="./assets/js/reservation.js"></script>
 </body>
 
 </html>

@@ -45,99 +45,99 @@ function showToastMessage (type,message) {
 
 /* Navbar and footer */
 const navbarFR = {
-    proHandsLogoPath : './img/Logo.jpg',
+    proHandsLogoPath : './assets/img/cropped-car-1-white.webp',
     activeLanguage:{
         text: "Français",
-        flagPath: "./img/flags/ch.svg"
+        flagPath: "/assets/img/flags/ch.svg"
     },
     languagesLinks:[
-        { path: "./en/", text: "English", flagPath: "./img/flags/en.svg" },
-        { path: "./de/", text: "Deutsch", flagPath: "./img/flags/de.svg" },
-        { path: "./it/", text: "Italien", flagPath: "./img/flags/it.svg" },
+        { path: "/en/", text: "English", flagPath: "/assets/img/flags/en.svg" },
+        { path: "/de/", text: "Deutsch", flagPath: "/assets/img/flags/de.svg" },
+        { path: "/it/", text: "Italien", flagPath: "/assets/img/flags/it.svg" },
     ],
     reservationLink: {
-        path: './resa.html',
+        path: './reservation.html',
         text: 'Réserver'
     },
     navLinks:[
         { path: "./index.html", text: "Accueil" },
-        { path: "./A propos.html", text: "A propos" },
+        { path: "./a-propos.html", text: "A propos" },
         { path: "./service.html", text: "Nos Services" },
     ]
 }
 
 const navbarEN = {
-    proHandsLogoPath : '../img/cropped-car-1-white.webp',
+    proHandsLogoPath : '/assets/img/cropped-car-1-white.webp',
     activeLanguage:{
         text: "English",
-        flagPath: "../img/flags/en.svg"
+        flagPath: "/assets/img/flags/en.svg"
     },
     languagesLinks:[
-        { path: "./", text: "French", flagPath: "../img/flags/fr.svg" },
-        { path: "./de/", text: "Deutsch", flagPath: "../img/flags/de.svg" },
-        { path: "./it/", text: "Italien", flagPath: "../img/flags/it.svg" },
+        { path: "/", text: "French", flagPath: "/assets/img/flags/ch.svg" },
+        { path: "/de/startseite.html", text: "Deutsch", flagPath: "/assets/img/flags/de.svg" },
+        { path: "/it/home.html", text: "Italien", flagPath: "/assets/img/flags/it.svg" },
     ],
     reservationLink: {
-        path: './en/reservation.html',
+        path: '/en/reservation.html',
         text: 'Book'
     },
     navLinks:[
-        { path: "./en/index.html", text: "Home" },
-        { path: "./en/A propos.html", text: "About Us" },
-        { path: "./en/service.html", text: "Services" },
+        { path: "/en/home.html", text: "Home" },
+        { path: "/en/about-us.html", text: "About Us" },
+        { path: "/en/service.html", text: "Services" },
     ]
 }
 
 const navbarDE = {
-    proHandsLogoPath : '../img/cropped-car-1-white.webp',
+    proHandsLogoPath : '/assets/img/cropped-car-1-white.webp',
     activeLanguage:{
         text: "Deutsch",
-        flagPath: "../img/flags/de.svg"
+        flagPath: "/assets/img/flags/de.svg"
     },
     languagesLinks:[
-        { path: "./en/", text: "English", flagPath: "../img/flags/en.svg" },
-        { path: "./", text: "Französisch", flagPath: "../img/flags/fr.svg" },
-        { path: "./it/", text: "Italienisch", flagPath: "../img/flags/it.svg" },
+        { path: "/en/home.html", text: "English", flagPath: "/assets/img/flags/en.svg" },
+        { path: "/", text: "Französisch", flagPath: "/assets/img/flags/ch.svg" },
+        { path: "/it/home.html", text: "Italienisch", flagPath: "/assets/img/flags/it.svg" },
     ],
     reservationLink: {
-        path: './de/reservation.html',
+        path: '/de/reservierung.html',
         text: 'Buchen'
     },
     navLinks:[
-        { path: "./de/index.html", text: "Startseite" },
-        { path: "./de/A propos.html", text: "Über Uns" },
-        { path: "./de/service.html", text: "Dienstleistungen" },
+        { path: "/de/startseite.html", text: "Startseite" },
+        { path: "/de/uber-uns.html", text: "Über Uns" },
+        { path: "/de/dienstleistungen.html", text: "Dienstleistungen" },
     ]
 }
 
 const navbarIT = {
-    proHandsLogoPath : '../img/cropped-car-1-white.webp',
+    proHandsLogoPath : '/assets/img/cropped-car-1-white.webp',
     activeLanguage:{
         text: "Italiano",
-        flagPath: "../img/flags/it.svg"
+        flagPath: "/assets/img/flags/it.svg"
     },
     languagesLinks:[
-        { path: "./en", text: "English", flagPath: "../img/flags/en.svg" },
-        { path: "./de/", text: "Deutsch", flagPath: "../img/flags/de.svg" },
-        { path: "./", text: "French", flagPath: "../img/flags/fr.svg" },
+        { path: "/en/", text: "English", flagPath: "/assets/img/flags/en.svg" },
+        { path: "/de/", text: "Deutsch", flagPath: "/assets/img/flags/de.svg" },
+        { path: "/", text: "French", flagPath: "/assets/img/flags/ch.svg" },
     ],
     reservationLink: {
-        path: './it/reservation.html',
+        path: '/it/prenota.html',
         text: 'Prenota'
     },
     navLinks:[
-        { path: "./en/index.html", text: "Home" },
-        { path: "./en/A propos.html", text: "About Us" },
-        { path: "./en/service.html", text: "Services" },
+        { path: "/it/home.html", text: "Home" },
+        { path: "/it/chi-siamo.html", text: "Chi siamo" },
+        { path: "/it/servizi.html", text: "I nostri servizi" },
     ]
 }
 
 const footerFR = {
-    backgroundPath: './img/footer.png',
+    backgroundPath: '/assets/img/footer.png',
     bloc1:{
         title: 'Prohands Carwash',
         subtitile: 'CRÉÉ AFIN DE RÉVOLUTIONNER LE<br> SOIN AUTOMOBILE',
-        logoPath: './img/cropped-car-1-white.webp'
+        logoPath: '/assets/img/cropped-car-1-white.webp'
     },
     bloc2: {
         title: 'Informations'
@@ -145,8 +145,8 @@ const footerFR = {
     bloc3: {
         title: 'Pages',
         links: [
-            { path: "./index.html",    text: "Page d'accueil" },
-            { path: "./A propos.html", text: "À propos de nous" },
+            { path: "/",    text: "Page d'accueil" },
+            { path: "./a-propos.html", text: "À propos de nous" },
             { path: "./service.html",  text: "Nos services" }
         ],
         reservationBtn: {
@@ -157,11 +157,11 @@ const footerFR = {
 }
 
 const footerEN = {
-    backgroundPath: '../img/footer.png',
+    backgroundPath: '/assets/img/footer.png',
     bloc1:{
         title: 'Prohands Carwash',
         subtitile: 'THE AUTOMOTIVE CARE<br>REVOLUTION',
-        logoPath: '../img/cropped-car-1-white.webp'
+        logoPath: '/assets/img/cropped-car-1-white.webp'
     },
     bloc2: {
         title: 'Informations'
@@ -169,23 +169,23 @@ const footerEN = {
     bloc3: {
         title: 'Pages',
         links: [
-            { path: "./en/index.html",    text: "Home" },
-            { path: "./en/A propos.html", text: "About Us" },
-            { path: "./en/service.html",  text: "Services" }
+            { path: "/en/home.html",    text: "Home" },
+            { path: "/en/about-us.html", text: "About Us" },
+            { path: "/en/service.html",  text: "Services" }
         ],
         reservationBtn: {
-            path: "./en/reservation.html",
+            path: "/en/reservation.html",
             text: "Reserve Now"
         }
     }
 }
 
 const footerDE = {
-    backgroundPath: '../img/footer.png',
+    backgroundPath: '/assets/img/footer.png',
     bloc1:{
         title: 'Prohands Carwash',
         subtitile: 'CENTWICKELT, UM AUTOFLEGE NEU ZU<br>DEFINIEREN',
-        logoPath: '../img/cropped-car-1-white.webp'
+        logoPath: '/assets/img/cropped-car-1-white.webp'
     },
     bloc2: {
         title: 'Geschäftsinformationen'
@@ -193,23 +193,23 @@ const footerDE = {
     bloc3: {
         title: 'Seiten',
         links: [
-            { path: "./de/index.html",    text: "Startseite" },
-            { path: "./de/A propos.html", text: "Über Uns" },
-            { path: "./de/service.html",  text: "Dienstleistungen" }
+            { path: "/de/startseite.html", text: "Startseite" },
+            { path: "/de/uber-uns.html", text: "Über Uns" },
+            { path: "/de/dienstleistungen.html",  text: "Dienstleistungen" }
         ],
         reservationBtn: {
-            path: "./de/reservation.html",
+            path: "/de/reservierung.html",
             text: "Reinigungstermin Buchen"
         }
     }
 }
 
 const footerIT = {
-    backgroundPath: '../img/footer.png',
+    backgroundPath: '/assets/img/footer.png',
     bloc1:{
         title: 'Prohands Carwash',
         subtitile: 'CREATO PER RIVOLUZIONARE LA<br> SOIN AUTOMOBILE',
-        logoPath: '../img/cropped-car-1-white.webp'
+        logoPath: '/assets/img/cropped-car-1-white.webp'
     },
     bloc2: {
         title: 'Informazioni'
@@ -217,12 +217,12 @@ const footerIT = {
     bloc3: {
         title: 'Pagine',
         links: [
-            { path: "./it/index.html",    text: "Home" },
-            { path: "./it/A propos.html", text: "Chi siamo" },
-            { path: "./it/service.html",  text: "I nostri servizi" }
+            { path: "/it/home.html", text: "Home" },
+            { path: "/it/chi-siamo.html", text: "Chi siamo" },
+            { path: "/it/servizi.html",  text: "I nostri servizi" }
         ],
         reservationBtn: {
-            path: "./it/reservation.html",
+            path: "/it/prenota.html",
             text: "Prenota una pulizia"
         }
     }
@@ -247,16 +247,113 @@ const languageContents = {
     }
 }
 
-function getHtmlPageName(language){
-    let pagePath = location.pathname;
-    if(pagePath.includes(language)){
-        return pagePath.split(language + '/')[1];
+const linksRemapper = {
+    "fr":{
+        "":{
+            "it": "/it/home.html",
+            "en": "/en/home.html",
+            "de": "/de/startseite.html"
+        },
+        "index.html":{
+            "it": "/it/home.html",
+            "en": "/en/home.html",
+            "de": "/de/startseite.html"
+        },
+        "a-propos.html":{
+            "it": "/it/chi-siamo.html",
+            "en": "/en/about-us.html",
+            "de": "/de/uber-uns.html"
+        },
+        "service.html":{
+            "it": "/it/servizi.html",
+            "en": "/en/service.html",
+            "de": "/de/dienstleistungen.html"
+        },
+        "reservation.html":{
+            "it": "/it/prenota.html",
+            "en": "/en/reservation.html",
+            "de": "/de/reservierung.html"
+        },
+    },
+    "en":{
+        "about-us.html":{
+            "fr": "/a-propos.html",
+            "it": "/it/chi-siamo.html",
+            "de": "/de/uber-uns.html"
+        },
+        "home.html":{
+            "fr": "/",
+            "it": "/it/home.html",
+            "de": "/de/startseite.html"
+        },
+        "reservation.html":{
+            "fr": "/reservation.html",
+            "it": "/it/prenota.html",
+            "de": "/de/reservierung.html"
+        },
+        "service.html":{
+            "fr": "/service.html",
+            "it": "/it/servizi.html",
+            "de": "/de/dienstleistungen.html"
+        }
+    },
+    "it":{
+        "home.html":{
+            "fr": "/",
+            "en": "/en/home.html",
+            "de": "/de/startseite.html"
+        },
+        "chi-siamo.html":{
+            "fr": "/a-propos.html",
+            "en": "/en/about-us.html",
+            "de": "/de/uber-uns.html"
+        },
+        "prenota.html":{
+            "fr": "/reservation.html",
+            "en": "/en/reservation.html",
+            "de": "/de/reservierung.html"
+        },
+        "servizi.html":{
+            "fr": "/service.html",
+            "en": "/en/service.html",
+            "de": "/de/dienstleistungen.html"
+        }
+    },
+    "de":{
+        "startseite.html":{
+            "fr": "/",
+            "it": "/it/home.html",
+            "en": "/en/home.html"
+        },
+        "uber-uns.html":{
+            "fr": "/a-propos.html",
+            "it": "/it/chi-siamo.html",
+            "en": "/en/about-us.html"
+        },
+        "reservierung.html":{
+            "fr": "/reservation.html",
+            "it": "/it/prenota.html",
+            "en": "/en/reservation.html"
+        },
+        "dienstleistungen.html":{
+            "fr": "/service.html",
+            "it": "/it/servizi.html",
+            "en": "/en/service.html"
+        }
     }
-    return pagePath.split('/')[1];
 }
 
 function getLanguageRedirectionLink(path, activeLanguage){
-    return path + getHtmlPageName(activeLanguage);
+    let newLanguage = path.split('/')[1].split('/')[0];
+    if(newLanguage === "") newLanguage = "fr";
+    let pageLocation = location.pathname;
+    if(pageLocation.includes(activeLanguage)){
+        pageLocation = pageLocation.split(activeLanguage + "/")[1];
+    } else {
+        pageLocation = pageLocation.replace('/','');
+    }
+    let newLocation = linksRemapper[activeLanguage][pageLocation][newLanguage];
+    return newLocation;
 }
 
 function buildHeader(language){
@@ -317,7 +414,7 @@ function buildHeader(language){
     for(let country of languagesLinks){
         let li = document.createElement('li');
         li.innerHTML = `
-        <a href="${getLanguageRedirectionLink(country.path, activeLanguage)}" class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
+        <a href="${getLanguageRedirectionLink(country.path, language)}" class="flex items-center justify-start px-3 py-2 hover:bg-white/40 rounded">
             <img src="${country.flagPath}" class="w-5 h-5 mr-2" />
             <span class="md:inline">${country.text}</span>
          </a>

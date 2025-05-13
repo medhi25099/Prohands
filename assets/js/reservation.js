@@ -1,17 +1,45 @@
+const stepsContainer = document.getElementById('steps-container');
+stepsContainer.className = "mt-[1.5rem] max-w-6xl mx-auto bg-white p-6 rounded shadow";
+
+function getFormulaireElement(userType) {
+    let formulaireElement = document.createElement('div');
+    formulaireElement.id = 'formulaire-contact';
+    formulaireElement.className = "mt-8 hidden";
+    formulaireElement.innerHTML = `
+    <h2 class="text-xl font-bold mb-6">${stepFormulaire.stepNumber[userType]}. ${stepFormulaire.title}</h2>
+    <div id="formulaire-contact-form" class="space-y-6"></div>`
+    return formulaireElement;
+}
+
+function removeAllForUsertypeSwitch(){
+    [
+        "select-vehicule-type",
+        "select-lavage-interieur-global-container",
+        "select-lavage-exterieur-global-container",
+        "total-container",
+        "formulaire-contact"
+    ].forEach((elementId) => {
+        let element = document.getElementById(elementId);
+        if(element && stepsContainer.contains(element)){
+            stepsContainer.removeChild(element);
+        }
+    });
+}
+
 const setPriceElement = (elem, value) => elem.setAttribute('data-price', value);
 const setTimeElement = (elem, value) => elem.setAttribute('data-time', value);
 
-function closeCollapse(elementID){
+function closeCollapse(elementID) {
     let stepContainer = document.getElementById(elementID);
     stepContainer.querySelector('[data-type="collapse"]').classList.add('hidden');
     stepContainer.querySelector('svg').classList.add('rotate-180');
 }
 
-scrollIntoSection = e => { 
-    setTimeout(()=> document.getElementById(e).scrollIntoView({ behavior:"smooth" }), 250);
+scrollIntoSection = e => {
+    setTimeout(() => document.getElementById(e).scrollIntoView({ behavior: "smooth" }), 250);
 };
 
-function resetVehiculeType(){
+function resetVehiculeType() {
     let stepSelectVehiculeType = document.getElementById('select-vehicule-type');
     if (stepSelectVehiculeType) {
         //Reset selected vehicule type
@@ -23,15 +51,15 @@ function resetVehiculeType(){
     }
 }
 
-function resetLavageType(type){
+function resetLavageType(type) {
     let stepSelectLavageType = document.getElementById(`select-lavage-${type}-global-container`);
-    if(stepSelectLavageType){
+    if (stepSelectLavageType) {
         //Reset selected type
         document.querySelectorAll(`.lavage-${type}-option`).forEach(element => element.classList.remove('bg-blue-100', 'border-blue-500'));
         //Uncheck optionnal option lavage interieur
         stepSelectLavageType.querySelectorAll('input[type="checkbox"]').forEach(checkbox => { checkbox.checked = false });
-        stepSelectLavageType.querySelectorAll('input[type="text"]').forEach(input => { 
-            input.setAttribute('value',"0");
+        stepSelectLavageType.querySelectorAll('input[type="text"]').forEach(input => {
+            input.setAttribute('value', "0");
             setPriceElement(input, 0);
             setTimeElement(input, 0);
         });
@@ -42,7 +70,7 @@ function resetLavageType(type){
     }
 }
 
-function resetAllCollapseElements(){
+function resetAllCollapseElements() {
     document.querySelectorAll('[data-type="collapse"]').forEach(e => {
         e.classList.remove('hidden');
         e.parentElement.querySelector('svg').classList.remove('rotate-180');
@@ -63,27 +91,27 @@ function createBtnCollapse(stepNumber, title) {
     let h2 = document.createElement('h2');
     h2.className = "flex justify-between items-center text-xl font-bold mb-4";
     h2.setAttribute('data-type', 'btn-collapse');
-    h2.setAttribute('state','open');
+    h2.setAttribute('state', 'open');
     h2.innerHTML = `
     <span>${stepNumber}. ${title}</span>
     <svg class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
     </svg>`;
-    h2.addEventListener('click',() => {
+    h2.addEventListener('click', () => {
         h2.parentElement.querySelector('[data-type="collapse"]').classList.toggle('hidden');
         h2.querySelector('svg').classList.toggle('rotate-180');
     });
     return h2;
 }
 
-function createPriceElement(price){
+function createPriceElement(price) {
     const priceTag = document.createElement('p');
     priceTag.className = 'price-display text-sm font-semibold text-blue-600 mt-2';
     priceTag.textContent = `CHF ${price}`;
     return priceTag;
 }
 
-function createOptionnalOptions(option){
+function createOptionnalOptions(option) {
     let container = document.createElement('label');
     container.className = `flex items-center`;
     if (option.type === "checkbox") {
@@ -142,17 +170,17 @@ function createOptionnalOptions(option){
     return container;
 }
 
-function updatePrestationElement(el, price){
+function updatePrestationElement(el, price) {
     //Remove old price
     el.querySelector('.price-display')?.remove();
     //Display price condition
-    if(price > 0){
+    if (price > 0) {
         let priceElement = createPriceElement(price);
         el.appendChild(priceElement);
     }
 }
 
-function updateAndDisplayPrestationExterieur(prestationType){
+function updateAndDisplayPrestationExterieur(prestationType) {
     let lavageExterieurOptionElement = document.querySelectorAll('.lavage-exterieur-option');
     lavageExterieurOptionElement.forEach(element => {
         //Get type of prestation
@@ -162,7 +190,7 @@ function updateAndDisplayPrestationExterieur(prestationType){
         updatePrestationElement(element, price);
 
         //Add click event
-        element.addEventListener('click',(e) => {
+        element.addEventListener('click', (e) => {
             closeCollapse('select-lavage-interieur-global-container');
             scrollIntoSection('select-lavage-exterieur-global-container');
             setPriceElement(element, price);
@@ -172,17 +200,17 @@ function updateAndDisplayPrestationExterieur(prestationType){
             lavageExterieurOptionElement.forEach(btn => { btn.classList.remove('bg-blue-100', 'border-blue-500'); });
             //set element active
             element.classList.add('bg-blue-100', 'border-blue-500');
-            
+
             //reset additionnal option
             let optionsContainer = document.getElementById('select-lavage-exterieur-additionnal-options');
             optionsContainer.innerHTML = "";
-            
+
             //update additionnal option
-            if(Object.keys(additionnalOpts).length){
+            if (Object.keys(additionnalOpts).length) {
                 for (let option of Object.values(additionnalOpts)) {
                     let opt = createOptionnalOptions(option);
                     opt.insertAdjacentText("beforeend", `${option.name} (CHF ${option.price})`);
-                    if(option.hasOwnProperty('tootips')){
+                    if (option.hasOwnProperty('tooltips')) {
                         let span = document.createElement('span');
                         span.innerHTML = `
                         <div class="relative group">
@@ -191,11 +219,22 @@ function updateAndDisplayPrestationExterieur(prestationType){
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                                 </svg>
                             </button>
-                            <div class="absolute w-80 bottom-full left-[-100%] md:left-[50%]  -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
-                                ${option.tootips}
+                            <div class="absolute w-80 bottom-full left-[-100%] md:left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                                ${option.tooltips}
                             </div>
                         </div>
-                        `
+                        `;
+                        let btn = span.querySelector('button');
+                        btn.addEventListener('click',() => {
+                            let tooltipsElement = btn.parentElement.querySelector('div');
+                            if(tooltipsElement.classList.contains('scale-0')){
+                                tooltipsElement.classList.remove('scale-0');
+                                tooltipsElement.classList.add('scale-100');
+                            } else {
+                                tooltipsElement.classList.remove('scale-100');
+                                tooltipsElement.classList.add('scale-0');
+                            }
+                        });
                         opt.appendChild(span);
                     }
 
@@ -228,9 +267,9 @@ function loadVehiculePrestation(prestationType) {
         //Collect data
         let { price, estimatedTime, additionnalOpts } = prestationType['lavage-interieur'][prestation];
         updatePrestationElement(element, price);
-        
+
         //Add click event
-        element.addEventListener('click',(e) => {
+        element.addEventListener('click', (e) => {
             setPriceElement(element, price);
             setTimeElement(element, estimatedTime);
 
@@ -241,13 +280,13 @@ function loadVehiculePrestation(prestationType) {
 
             //display price
             document.getElementById('total-container').classList.remove('hidden');
-            
+
             //reset additionnal option
             let optionsContainer = document.getElementById('select-lavage-interieur-additionnal-options');
             optionsContainer.innerHTML = "";
-            
+
             //update additionnal option
-            if(Object.keys(additionnalOpts).length){
+            if (Object.keys(additionnalOpts).length) {
                 for (let option of Object.values(additionnalOpts)) {
                     let opt = createOptionnalOptions(option);
                     opt.insertAdjacentText("beforeend", `${option.name} (CHF ${option.price})`);
@@ -297,10 +336,10 @@ function getElementSelectUserType() {
             let nextStepContainer = document.getElementById('select-vehicule-type');
             if (nextStepContainer) {
                 if (checkboxParticulier.checked || checkboxProfessionel.checked) {
-                    if(checkboxParticulier.checked){
+                    if (checkboxParticulier.checked) {
                         loadParticulierFormulaire();
                     }
-                    if(checkboxProfessionel.checked){
+                    if (checkboxProfessionel.checked) {
                         loadProfessionelForulaire();
                     }
                     nextStepContainer.classList.remove('hidden');
@@ -354,14 +393,14 @@ function createVehiculeCard(vehiculeInfo) {
         <p class="text-sm text-gray-700">${vehiculeInfo.name}</p>
         <p class="text-sm font-semibold text-gray-900">${vehiculeInfo.description}</p>
     </div>`;
-    
+
     card.addEventListener('click', () => {
         resetLavageType('interieur');
         resetLavageType('exterieur');
 
         //Remove previous active card
         document.querySelectorAll('.vehicule-type').forEach(v => v.classList.remove('bg-blue-500', 'text-white'));
-        
+
         //Set card active
         card.classList.add('bg-blue-500', 'text-white');
 
@@ -413,7 +452,7 @@ function getElementSelectVehiculeType() {
     return selectVehiculeTypeContainer;
 }
 
-function createLavageCardType(lavageInfo, optionType){
+function createLavageCardType(lavageInfo, optionType) {
     let lavageType = document.createElement('div');
     lavageType.className = `lavage-${optionType}-option border p-4 rounded cursor-pointer hover:shadow`;
     lavageType.setAttribute('data-type', lavageInfo['data-type']);
@@ -424,7 +463,7 @@ function createLavageCardType(lavageInfo, optionType){
     return lavageType;
 }
 
-function getElementSelectLavageType(prestation, stepName){
+function getElementSelectLavageType(prestation, stepName) {
     const selectLavageTypeContainer = document.createElement('div');
     selectLavageTypeContainer.id = `select-lavage-${stepName}-global-container`;
     selectLavageTypeContainer.className = "mt-8 hidden";
@@ -436,7 +475,7 @@ function getElementSelectLavageType(prestation, stepName){
 
     const containerChoiceSelectLavage = document.createElement('div');
     containerChoiceSelectLavage.className = "grid grid-cols-1 sm:grid-cols-3 gap-4";
-    for(let lavageInfo of prestation.choices){
+    for (let lavageInfo of prestation.choices) {
         let lavageType = createLavageCardType(lavageInfo, stepName);
         containerChoiceSelectLavage.appendChild(lavageType);
     }
@@ -468,7 +507,7 @@ function getElementTotalPriceAndTime() {
 }
 
 const validateField = (value, pattern, errorMessage) => {
-    if(!pattern.test(value)){
+    if (!pattern.test(value)) {
         showToastMessage("failed", errorMessage);
         return false;
     }
@@ -477,6 +516,7 @@ const validateField = (value, pattern, errorMessage) => {
 
 emailjs.init("J6unhdg87ygbWvXDb");
 const regexPatterns = {
+    number: /^\d+$/,
     nomPrenom: /^[A-Za-zÀ-ÖØ-öø-ÿ-]+(?: [A-Za-zÀ-ÖØ-öø-ÿ-]+)*$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     sujet: /^[A-Za-z0-9À-ÖØ-öø-ÿ.,!?()\- ]{3,}$/,
@@ -488,19 +528,19 @@ const regexPatterns = {
 async function sendEmail(formData) {
     try {
         //Mail for prohands
-        await emailjs.send("service_npcac6r","template_4dmofpf", formData);
-        
+        await emailjs.send("service_npcac6r", "template_4dmofpf", formData);
+
         //Mail confirmation client
-        await emailjs.send("service_npcac6r","template_kcuxuk7", { ...formData, to_email: formData.email });
+        await emailjs.send("service_npcac6r", "template_kcuxuk7", { ...formData, to_email: formData.email });
         showToastMessage("success", stepFormulaire.toastMsg.success);
-    } catch (e){
+    } catch (e) {
         showToastMessage("failed", stepFormulaire.toastMsg.error + JSON.stringify(e));
     }
 }
 
-function getSelectedPrestation(){
+function getSelectedPrestation() {
     let userType = document.querySelector('#select-user-type input[type="checkbox"]:checked').value;
-    
+
     let vehiculeType = document.querySelector('div.vehicule-type.bg-blue-500').dataset.type;
     let vehiculeCatégorieSub = document.querySelectorAll('#select-vehicule-additionnal-options input[type="checkbox"]:checked');
     let vehiculeAdditionnalQuestion = []
@@ -514,6 +554,9 @@ function getSelectedPrestation(){
         vehiculeAdditionnalQuestion.push(answer);
     })
 
+    let marqueModel = document.getElementById('plaque').value;
+    if (!validateField(marqueModel, regexPatterns.sujet, stepFormulaire.toastMsg.errors.plaque)) return false;
+
     //Lavage intérieur
     let lavageInterieurType = document.querySelector('div.lavage-interieur-option.bg-blue-100').dataset.type;
     let lavageInterieurSelectedOptions = [];
@@ -524,7 +567,7 @@ function getSelectedPrestation(){
     });
     let allLavageInterieurOptionsInput = document.querySelectorAll('#select-lavage-interieur-additionnal-options input[type="text"]');
     allLavageInterieurOptionsInput.forEach(input => {
-        if(input.value != "0"){
+        if (input.value != "0") {
             let description = `${input.value} ${input.parentElement.innerText.trim()}`;
             lavageInterieurSelectedOptions.push(description);
         }
@@ -540,7 +583,7 @@ function getSelectedPrestation(){
     });
     let allLavageExterieurOptionsInput = document.querySelectorAll('#select-lavage-exterieur-additionnal-options input[type="text"]');
     allLavageExterieurOptionsInput.forEach(input => {
-        if(input.value == "0"){
+        if (input.value == "0") {
             let description = `${input.value} ${input.parentElement.innerText.trim()}`;
             lavageExterieurSelectedOptions.push(description);
         }
@@ -553,24 +596,26 @@ function getSelectedPrestation(){
     let msg = []
     msg.push(`${stepFormulaire.template.user} ${userType}`);
     msg.push(`${stepFormulaire.template.vehicule} ${vehiculeType}`);
-    if(vehiculeAdditionnalQuestion.length){
+    if (vehiculeAdditionnalQuestion.length) {
         vehiculeAdditionnalQuestion.forEach(text => {
             msg.push(text);
         });
     }
 
+    msg.push(`${stepFormulaire.template.marqueModel} ${marqueModel}`);
+
     msg.push(`${stepFormulaire.template.lavageInterieur} ${lavageInterieurType}`);
-    if(lavageInterieurSelectedOptions.length){
+    if (lavageInterieurSelectedOptions.length) {
         msg.push(`${stepFormulaire.template.additionnal}`);
         lavageInterieurSelectedOptions.forEach(option => {
-           msg.push(`- ${option}`);
+            msg.push(`- ${option}`);
         });
     } else {
         msg.push(`${stepFormulaire.template.noAdditionnal}`);
     }
 
     msg.push(`${stepFormulaire.template.lavageExterieur} ${lavageExterieurType}`)
-    if(lavageExterieurSelectedOptions.length){
+    if (lavageExterieurSelectedOptions.length) {
         msg.push(`${stepFormulaire.template.additionnal}`);
         lavageExterieurSelectedOptions.forEach(option => {
             msg.push(`- ${option}`);
@@ -581,52 +626,53 @@ function getSelectedPrestation(){
 
     msg.push(`${stepFormulaire.template.interventionTime} ${interventionTime}`);
     msg.push(`${stepFormulaire.template.price} ${price}`);
+
+    let payment = document.getElementById('payment-method').value;
+    if (!validateField(payment, regexPatterns.sujet, stepFormulaire.toastMsg.errors.payment)) return false;
+    msg.push(`${stepFormulaire.template.payment} ${payment}`);
+
     console.log(msg.join('\n'));//replace per <BR> for template display has HTML
     return msg.join('\r\n');
 }
 
-async function checkFormulaire(){
+async function checkFormulairePersonnel() {
     try {
         let date = document.getElementById('date-heure').value;
         let name = document.getElementById('nom').value;
         let email = document.getElementById('email').value;
         let phone = document.getElementById('tel').value;
-        let plaque = document.getElementById('plaque').value;
         let address = document.getElementById('adresse').value;
         let zip = document.getElementById('zip').value;
         let city = document.getElementById('ville').value;
         let comments = document.getElementById('remarques').value;
-        let payment = document.getElementById('payment-method').value;
-
-        if(!validateField(date, regexPatterns.date, stepFormulaire.toastMsg.errors.date )) return false;
-        if(!validateField(name, regexPatterns.nomPrenom, stepFormulaire.toastMsg.errors.name)) return false;
-        if(!validateField(email, regexPatterns.email, stepFormulaire.toastMsg.errors.email)) return false;
-        if(!validateField(phone, regexPatterns.phone, stepFormulaire.toastMsg.errors.phone)) return false;
-        if(!validateField(plaque, regexPatterns.sujet, stepFormulaire.toastMsg.errors.plaque)) return false;
-        if(!validateField(address, regexPatterns.sujet, stepFormulaire.toastMsg.errors.address)) return false;
-        if(!validateField(zip, regexPatterns.sujet, stepFormulaire.toastMsg.errors.zip)) return false;
-        if(!validateField(city, regexPatterns.sujet, stepFormulaire.toastMsg.errors.city)) return false;
-        if(!validateField(comments, regexPatterns.message, stepFormulaire.toastMsg.errors.comments)) return false;
-        if(!validateField(payment, regexPatterns.sujet, stepFormulaire.toastMsg.errors.payment)) return false;
-
-        let prestations = getSelectedPrestation();
-        const formData = { date, name, email, phone, plaque, address, zip, city, comments, payment, prestations };
         
-        return await sendEmail(formData);
-    } catch(error){
+
+        if (!validateField(date, regexPatterns.date, stepFormulaire.toastMsg.errors.date)) return false;
+        if (!validateField(name, regexPatterns.nomPrenom, stepFormulaire.toastMsg.errors.name)) return false;
+        if (!validateField(email, regexPatterns.email, stepFormulaire.toastMsg.errors.email)) return false;
+        if (!validateField(phone, regexPatterns.phone, stepFormulaire.toastMsg.errors.phone)) return false;
+        if (!validateField(address, regexPatterns.sujet, stepFormulaire.toastMsg.errors.address)) return false;
+        if (!validateField(zip, regexPatterns.number, stepFormulaire.toastMsg.errors.zip)) return false;
+        if (!validateField(city, regexPatterns.sujet, stepFormulaire.toastMsg.errors.city)) return false;
+        
+        let prestations = getSelectedPrestation();
+        const formData = { date, name, email, phone, address, zip, city, comments, prestations };
+
+        //return await sendEmail(formData);
+    } catch (error) {
         console.log(error)
         showToastMessage("failed", error.message);
     }
 }
 
-function loadParticulierFormulaire(){
+function loadParticulierFormulaire() {
     const formulaireFormElement = document.getElementById('formulaire-contact-form');
     formulaireFormElement.innerHTML = `
      <!-- Date et heure de réservation -->
     <div class="relative">
         <input type="text" id="date-heure" name="date-heure" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
         <label for="date-heure" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-            ${stepFormulaire.particulier.datePicker}
+            ${stepFormulaire.datePicker}
         </label>
     </div>
     <!-- Nom complet et Email -->
@@ -634,13 +680,13 @@ function loadParticulierFormulaire(){
         <div class="relative">
             <input type="text" id="nom" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
             <label for="nom" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                ${stepFormulaire.particulier.name}
+                ${stepFormulaire.name}
             </label>
         </div>
         <div class="relative">
             <input type="email" id="email" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
             <label for="email" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                ${stepFormulaire.particulier.email}
+                ${stepFormulaire.email}
             </label>
         </div>
     </div>
@@ -649,13 +695,13 @@ function loadParticulierFormulaire(){
         <div class="relative">
             <input type="tel" id="tel" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
             <label for="tel" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                ${stepFormulaire.particulier.phone}
+                ${stepFormulaire.phone}
             </label>
         </div>
         <div class="relative">
             <input type="text" id="plaque" class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
             <label for="plaque" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                ${stepFormulaire.particulier.infos}
+                ${stepFormulaire.infos}
             </label>
         </div>
     </div>
@@ -664,7 +710,7 @@ function loadParticulierFormulaire(){
         <div class="relative col-span-1 md:col-span-3">
             <input type="text" id="adresse" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
             <label for="adresse" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                ${stepFormulaire.particulier.add}
+                ${stepFormulaire.add}
             </label>
         </div>
     </div>
@@ -672,14 +718,14 @@ function loadParticulierFormulaire(){
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="relative">
             <input type="tel" id="zip" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
-            <label for="tel" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-               ${stepFormulaire.particulier.nip}
+            <label for="zip" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+               ${stepFormulaire.nip}
             </label>
         </div>
         <div class="relative">
             <input type="text" id="ville" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
-            <label for="plaque" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-                ${stepFormulaire.particulier.city}
+            <label for="ville" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
+                ${stepFormulaire.city}
             </label>
         </div>
     </div>   
@@ -687,27 +733,37 @@ function loadParticulierFormulaire(){
     <div class="relative">
         <textarea id="remarques" rows="4" class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-transparent" placeholder=" "></textarea>
         <label for="remarques" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">
-            ${stepFormulaire.particulier.comment}
+            ${stepFormulaire.comment}
         </label>
     </div>
     <!-- Moyen de paiement -->
     <div class="relative">
         <label for="payment-method" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500 mb-2">
-            ${stepFormulaire.particulier.payments.label}
+            ${stepFormulaire.payments.label}
         </label>
         <select id="payment-method" name="payment-method" required class="peer w-full border border-gray-300 rounded px-4 pt-6 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="" disabled selected>${stepFormulaire.particulier.payments.labelAlt}</option>
+            <option value="" disabled selected>${stepFormulaire.payments.labelAlt}</option>
         </select>
+    </div>
+    <div class="space-y-4 mt-4">
+        <div class="flex items-start">
+            <input type="checkbox" checked id="cgv" required class="hidden mt-1 mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+            <label for="cgv" class="hidden text-sm text-gray-700">${stepFormulaire.cgv.before}<a href="/cgv" target="_blank" class="text-blue-600 underline hover:text-blue-800">${stepFormulaire.cgv.after}</a></label>
+        </div>   
+        <div class="flex items-start">
+            <input type="checkbox" id="data-allow" class="mt-1 mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+            <label for="data-allow" class="text-sm text-gray-700">${stepFormulaire.dataAllow}</label>
+        </div>
     </div>
     <!-- Bouton -->
     <div>
         <button id="btn-send-formulaire" class="w-full disabled:bg-gray-500 bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all" disabled>
-            ${stepFormulaire.particulier.button}
+            ${stepFormulaire.button}
         </button>
     </div>`;
 
     let paymentContainer = document.querySelector('#payment-method');
-    for(let option of stepFormulaire.particulier.payments.options){
+    for (let option of stepFormulaire.payments.options) {
         let optionElement = document.createElement('option');
         optionElement.setAttribute('value', option.name.toLowerCase());
         optionElement.innerHTML = option.name;
@@ -715,7 +771,7 @@ function loadParticulierFormulaire(){
     }
 
     let btnSendForm = document.getElementById('btn-send-formulaire');
-    btnSendForm.addEventListener('click', checkFormulaire);
+    btnSendForm.addEventListener('click', checkFormulairePersonnel);
 
     /* Datetime picker init */
     flatpickr("#date-heure", {
@@ -732,49 +788,253 @@ function loadParticulierFormulaire(){
     });
 }
 
-function loadProfessionelForulaire(){
+let formType;
+function loadFormParticulier(){
+    formType = 'particulier';
+    //Step select vehicule type
+    const selectVehiculeTypeContainer = getElementSelectVehiculeType();
+    stepsContainer.appendChild(selectVehiculeTypeContainer);
+
+    //Step lavage interieur
+    const selectLavageInterieurTypeContainer = getElementSelectLavageType(stepSelectLavageInterieurType, 'interieur');
+    stepsContainer.appendChild(selectLavageInterieurTypeContainer);
+
+    //Step lavage exterieur
+    const selectLavageExterieurTypeContainer = getElementSelectLavageType(stepSelectLavageExterieurType, 'exterieur');
+    stepsContainer.appendChild(selectLavageExterieurTypeContainer);
+
+    //Step formulaire
+    const formulaireContainer = getFormulaireElement('particulier');
+    stepsContainer.appendChild(formulaireContainer);
+
+    //Container price and time
+    const totalContainer = getElementTotalPriceAndTime();
+    stepsContainer.appendChild(totalContainer);
+    
+    loadParticulierFormulaire();
+    selectVehiculeTypeContainer.classList.remove('hidden');
+}
+
+async function checkFormulairePro(){
+    try {
+        let name = document.getElementById('nom').value;
+        if (!validateField(name, regexPatterns.nomPrenom, stepFormulaire.toastMsg.errors.name)) return false;
+
+        let email = document.getElementById('email').value;
+        if (!validateField(email, regexPatterns.email, stepFormulaire.toastMsg.errors.email)) return false;
+
+        let phone = document.getElementById('tel').value;
+        if (!validateField(phone, regexPatterns.phone, stepFormulaire.toastMsg.errors.phone)) return false;
+
+        let date = document.getElementById('date-heure').value;
+        if (!validateField(date, regexPatterns.sujet, stepFormulaire.toastMsg.errors.date)) return false;
+
+        let address = document.getElementById('adresse').value;
+        if (!validateField(address, regexPatterns.sujet, stepFormulaire.toastMsg.errors.address)) return false;
+
+        let zip = document.getElementById('zip').value;
+        if (!validateField(zip, regexPatterns.number, stepFormulaire.toastMsg.errors.zip)) return false;
+
+        let city = document.getElementById('ville').value;
+        if (!validateField(city, regexPatterns.sujet, stepFormulaire.toastMsg.errors.city)) return false;
+
+        //Prestation message info
+        let nIDE =  document.getElementById('ide').value;
+        
+        let pContact =  document.getElementById('personnedecontact').value;
+        if (!validateField(pContact, regexPatterns.nomPrenom, stepFormulaire.toastMsg.errors.pContact)) return false;
+
+        let nbVehicule = document.getElementById('nombreVhc').value;
+        if (!validateField(nbVehicule, regexPatterns.number, stepFormulaire.toastMsg.errors.nbVehicule)) return false;
+
+        let typeVehicule = document.getElementById('typeVhc').value;
+        if (!validateField(typeVehicule, regexPatterns.sujet, stepFormulaire.toastMsg.errors.typeVehicule)) return false;
+
+        let prestationType =  document.getElementById('typePrestation').value;
+        if (!validateField(prestationType, regexPatterns.sujet, stepFormulaire.toastMsg.errors.prestationType)) return false;
+
+        let interventionLocation = document.getElementById('lieuIntervention').value;
+        if (!validateField(interventionLocation, regexPatterns.sujet, stepFormulaire.toastMsg.errors.interventionLocation)) return false;
+
+        let comments = document.getElementById('remarques').value;
+
+        //Build msg
+        let userType = document.querySelector('#select-user-type input[type="checkbox"]:checked').value;
+
+        let msg = []
+        msg.push(`${stepFormulaire.template.user} ${userType}`);
+        msg.push(`${stepFormulaire.template.vehicule} ${typeVehicule}`);
+        msg.push(`${nbVehicule} ${stepFormulaire.template.vehiculeCount}`);
+
+        if(nIDE !== ""){
+            msg.push(`${stepFormulaire.template.nide} ${nIDE}`);
+        }
+        msg.push(`${stepFormulaire.template.pContact} ${pContact}`);
+        msg.push(`${stepFormulaire.template.interventionLocation} ${interventionLocation}`);
+        msg.push(`${stepFormulaire.template.prestationType} ${prestationType}`);
+       
+        console.log(msg.join('\n'));
+        let prestations = msg.join('\r\n');
+
+        const formData = { date, name, email, phone, address, zip, city, comments, prestations };
+        //return await sendEmail(formData);
+    } catch (error) {
+        console.log(error);
+        showToastMessage("failed", error.message);
+    }
+}
+
+function loadProfessionelFormulaire() {
     const formulaireFormElement = document.getElementById('formulaire-contact-form');
     formulaireFormElement.innerHTML = `
-    
-    `;
+    <!-- Nom de l'entreprise et numero ide -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="relative">
+            <input type="text" id="nom" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="nom" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.entrepriseName}</label>
+        </div>
+        <div class="relative">
+            <input type="email" id="ide" class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="email" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.nide}</label>
+        </div>
+    </div>
+    <!--Personne de contact et email pro-->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="relative">
+            <input type="text" id="personnedecontact" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="personnedecontact" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.personContact}</label>
+        </div>
+        <div class="relative">
+            <input type="email" id="email" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="email" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.emailPro}</label>
+        </div>
+    </div>
+    <!-- Téléphone et nombre de vehicule -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="relative">
+            <input type="tel" id="tel" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="tel" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.phone}</label>
+        </div>
+        <div class="relative">
+            <input type="text" id="nombreVhc" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="nombreVhc" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.vehiculeCount}</label>
+        </div>
+    </div>
+    <!--Type de vhc a nettoyer et prestation a faire -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="relative">
+            <input type="tel" id="typeVhc" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="typeVhc" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.vehiculeType}</label>
+        </div>
+        <div class="relative">
+            <input type="text" id="typePrestation" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="" />
+            <label for="typePrestation" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.servicesType}</label>
+        </div>
+    </div>
+    <!-- Date et heure de réservation -->
+    <div class="relative">
+        <input type="text" id="date-heure" name="date-heure" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+        <label for="date-heure" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.datePicker}</label>
+    </div>
+    <!-- Adresse, Code postal et Ville -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="relative col-span-1 md:col-span-3">
+            <input type="text" id="adresse" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="adresse" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.add}</label>
+        </div>
+    </div>
+    <!--Ville COde postale -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="relative">
+            <input type="tel" id="zip" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="zip" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.nip}</label>
+        </div>
+        <div class="relative">
+            <input type="text" id="ville" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="ville" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.city}</label>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="relative col-span-1 md:col-span-3">
+            <input type="text" id="lieuIntervention" required class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" " />
+            <label for="lieuIntervention" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.interventionLocation}</label>
+        </div>
+    </div>
+    <!-- Remarques -->
+    <div class="relative">
+        <textarea id="remarques" rows="4" class="peer w-full border border-gray-300 rounded px-4 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-transparent" placeholder=" "></textarea>
+        <label for="remarques" class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-500">${stepFormulaire.comment}</label>
+    </div>
+    <!--CGU CGV-->
+    <div class="space-y-4 mt-4">
+        <div class="flex items-start">
+            <input type="checkbox" checked id="cgv" required class="hidden mt-1 mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+            <label for="cgv" class="hidden text-sm text-gray-700">${stepFormulaire.cgv.before}<a href="/cgv" target="_blank" class="text-blue-600 underline hover:text-blue-800">${stepFormulaire.cgv.after}</a></label>
+        </div>   
+        <div class="flex items-start">
+            <input type="checkbox" id="data-allow" class="mt-1 mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+            <label for="data-allow" class="text-sm text-gray-700">${stepFormulaire.dataAllow}</label>
+        </div>
+    </div>
+    <!-- Bouton -->
+    <div>
+        <button id="btn-send-formulaire" class="w-full disabled:bg-gray-500 bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition-all" disabled>
+            ${stepFormulaire.button}
+        </button>
+    </div>`;
+    let btnSendForm = document.getElementById('btn-send-formulaire');
+    btnSendForm.addEventListener('click', checkFormulairePro);
 }
 
-function getFormulaireElement(){
-    let formulaireElement = document.createElement('div');
-    formulaireElement.id = 'formulaire-contact';
-    formulaireElement.className = "mt-8 hidden";
-    formulaireElement.innerHTML = `
-    <h2 class="text-xl font-bold mb-6">${stepFormulaire.stepNumber}. ${stepFormulaire.title}</h2>
-    <div id="formulaire-contact-form" class="space-y-6"></div>`
-    return formulaireElement;
+function loadFormProfessionnal(){
+    formType = 'professionnel';
+    const formulaireContainer = getFormulaireElement('professionnel');
+    stepsContainer.appendChild(formulaireContainer);
+    loadProfessionelFormulaire();
+    formulaireContainer.classList.remove('hidden');
 }
 
-const stepsContainer = document.getElementById('steps-container');
-stepsContainer.className = "mt-[1.5rem] max-w-6xl mx-auto bg-white p-6 rounded shadow";
+function getElementSelectUserType() {
+    const selectUserTypeContainer = document.createElement('div');
+    selectUserTypeContainer.id = "select-user-type";
+    selectUserTypeContainer.innerHTML = `
+    <div class="flex items-center flex-wrap gap-6">
+        <h2 class="text-xl font-bold mb-0">${stepSelectUserType.stepNumber}. ${stepSelectUserType.title}</h2>
+        <div class="inline-flex gap-6">
+            <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="checkbox" name="client-type" value="particulier" class="form-radio text-blue-600">
+                <span class="text-gray-800">${stepSelectUserType.choices[0]}</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="checkbox" name="client-type" value="professionnel" class="form-radio text-blue-600">
+                <span class="text-gray-800">${stepSelectUserType.choices[1]}</span>
+            </label>
+        </div>
+    </div>`;
+    const [checkboxParticulier, checkboxProfessionel] = selectUserTypeContainer.querySelectorAll('[type="checkbox"]');
+    [checkboxParticulier, checkboxProfessionel].forEach(element => {
+        element.addEventListener('change', (e) => {
+            removeAllForUsertypeSwitch();
+            if (e.target === checkboxParticulier) {
+                checkboxProfessionel.checked = false;
+                if(e.target.checked){
+                    loadFormParticulier();
+                } 
+            }
+            if (e.target === checkboxProfessionel) {
+                checkboxParticulier.checked = false;
+                if(e.target.checked){
+                    loadFormProfessionnal();
+                }
+            }
+        });
+    });
+    return selectUserTypeContainer;
+}
 
 //Step select user type
 const selectUserTypeContainer = getElementSelectUserType();
 stepsContainer.appendChild(selectUserTypeContainer);
-
-//Step select vehicule type
-const selectVehiculeTypeContainer = getElementSelectVehiculeType();
-stepsContainer.appendChild(selectVehiculeTypeContainer);
-
-//Step lavage interieur
-const selectLavageInterieurTypeContainer = getElementSelectLavageType(stepSelectLavageInterieurType ,'interieur');
-stepsContainer.appendChild(selectLavageInterieurTypeContainer);
-
-//Step lavage exterieur
-const selectLavageExterieurTypeContainer = getElementSelectLavageType(stepSelectLavageExterieurType ,'exterieur');
-stepsContainer.appendChild(selectLavageExterieurTypeContainer);
-
-//Step formulaire
-const formulaireContainer = getFormulaireElement();
-stepsContainer.appendChild(formulaireContainer);
-
-//Container price and time
-const totalContainer = getElementTotalPriceAndTime();
-stepsContainer.appendChild(totalContainer);
 
 function timeConverter(time) {
     const hours = Math.floor(time / 60);
@@ -813,13 +1073,32 @@ function updateTotal() {
     });
 
     let btnSendFormulaire = document.getElementById('btn-send-formulaire');
-    if(btnSendFormulaire){
-        if( total === 0) btnSendFormulaire.setAttribute('disabled','');
-        else btnSendFormulaire.removeAttribute('disabled')
+    if (btnSendFormulaire) {
+        let cgvCheckbox = document.getElementById('cgv');
+        let pDataCheckbox = document.getElementById('data-allow');
+        
+        if(formType === "particulier"){
+            if(total !== 0){
+                if(cgvCheckbox && pDataCheckbox){
+                    if(cgvCheckbox.checked && pDataCheckbox.checked) btnSendFormulaire.removeAttribute('disabled');
+                    else btnSendFormulaire.setAttribute('disabled','');
+                }
+            } 
+            else btnSendFormulaire.setAttribute('disabled', '');
+        } else {
+            //professionnel
+            if(cgvCheckbox && pDataCheckbox){
+                if(cgvCheckbox.checked && pDataCheckbox.checked) btnSendFormulaire.removeAttribute('disabled');
+                else btnSendFormulaire.setAttribute('disabled','');
+            }
+        }
     }
 
-    document.getElementById('total-price').innerText = `CHF ${total.toFixed(2)}`;
-    document.getElementById('total-time').innerText = timeConverter(totalTime);
+    let priceElement = document.getElementById('total-price');
+    if(priceElement) priceElement.innerText = `CHF ${total.toFixed(2)}`;
+    
+    let timeElement = document.getElementById('total-time');
+    if(timeElement) timeElement.innerText = timeConverter(totalTime);
 }
 
 // Mise à jour du total à chaque interaction
